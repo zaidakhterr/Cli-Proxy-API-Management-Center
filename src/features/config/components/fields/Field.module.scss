@@ -13,9 +13,8 @@
 
   :global(.form-group > label) {
     color: var(--text-secondary);
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 500;
-    letter-spacing: 0.02em;
   }
 
   /* 设置行与区块编辑器里的输入框同一副几何：36px 高、8px 圆角、纸色底。 */
@@ -27,16 +26,11 @@
     border-color: var(--border-color);
     box-shadow: none;
     font-size: 14px;
-    transition:
-      border-color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out),
-      background-color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out),
-      box-shadow var(--dur-hover, 200ms) var(--ease-out-strong, ease-out);
   }
 
   :global(.input:focus) {
     background: var(--bg-primary);
     border-color: var(--text-primary);
-    box-shadow: 0 0 0 2px color-mix(in srgb, var(--text-primary) 12%, transparent);
   }
 
   :global(.input[aria-invalid='true']) {
@@ -54,7 +48,7 @@
 
   :global(.hint) {
     color: var(--text-secondary);
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.55;
   }
 
@@ -94,7 +88,7 @@
   margin: 0;
   max-width: 80ch;
   color: var(--text-secondary);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.55;
 }
 
@@ -188,14 +182,14 @@
 .rowDescription {
   max-width: 72ch;
   color: var(--text-secondary);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.55;
   overflow-wrap: anywhere;
 }
 
 .rowError {
   color: var(--error-color);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 1.5;
 }
@@ -224,12 +218,10 @@
   background: var(--bg-secondary);
   box-shadow: none;
   font-size: 14px;
-  transition: border-color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out);
 
   &:focus-visible,
   &[aria-expanded='true'] {
     border-color: var(--text-primary);
-    box-shadow: 0 0 0 2px color-mix(in srgb, var(--text-primary) 12%, transparent);
   }
 
   &[aria-invalid='true'] {
@@ -260,7 +252,7 @@
   border-radius: 2px;
   background: var(--bg-primary);
   color: var(--text-secondary);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   white-space: nowrap;
   pointer-events: none;
@@ -293,27 +285,6 @@
 
 /* 内描边 + 淡底色：行位于 overflow:hidden 的列表里，外扩的 box-shadow 会被裁掉，
    且行的分隔线本身就是 box-shadow，所以脉冲改走 outline（向内偏移）。 */
-.fieldHighlightActive {
-  animation: config-field-highlight 1.8s var(--ease-out-strong, ease-out);
-}
-
-@keyframes config-field-highlight {
-  0% {
-    outline: 2px solid color-mix(in srgb, var(--text-primary) 55%, transparent);
-    outline-offset: -2px;
-    background-color: color-mix(in srgb, var(--text-primary) 6%, transparent);
-  }
-  55% {
-    outline: 2px solid color-mix(in srgb, var(--text-primary) 32%, transparent);
-    outline-offset: -2px;
-    background-color: color-mix(in srgb, var(--text-primary) 3%, transparent);
-  }
-  100% {
-    outline: 2px solid transparent;
-    outline-offset: -2px;
-    background-color: transparent;
-  }
-}
 
 /* ---------- 区块编辑器内部布局原语 ---------- */
 
@@ -342,28 +313,14 @@
 
 .fieldLabel {
   color: var(--text-secondary);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.02em;
 }
 
 .fieldHint {
   color: var(--text-secondary);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.55;
 }
 
 /* ---------- 无障碍 ---------- */
-
-@media (prefers-reduced-motion: reduce) {
-  .fieldsRoot :global(.input),
-  .selectControl > button[aria-haspopup='listbox'] {
-    transition: none;
-  }
-
-  .fieldHighlightActive {
-    animation: none;
-    outline: 2px solid color-mix(in srgb, var(--text-primary) 32%, transparent);
-    outline-offset: -2px;
-  }
-}

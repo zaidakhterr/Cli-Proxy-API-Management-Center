@@ -11,7 +11,7 @@
 
 .title {
   margin: 0;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.15;
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -28,17 +28,7 @@
   font-size: 13px;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.02em;
   color: var(--text-secondary);
-
-  &::before {
-    content: '▍';
-    color: var(--viz-success);
-    font-size: 13px;
-    line-height: 1;
-    align-self: center;
-    margin-right: 1px;
-  }
 }
 
 .metaDot {
@@ -58,21 +48,8 @@
   height: 6px;
   border-radius: 50%;
   background: currentColor;
-  animation: oauth-meta-breathe 1.6s ease-in-out infinite;
-}
-
-@keyframes oauth-meta-breathe {
-  50% {
-    opacity: 0.3;
-  }
 }
 
 .metaAdded {
   color: var(--viz-success);
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .pulse {
-    animation: none;
-  }
 }

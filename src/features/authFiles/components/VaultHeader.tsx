@@ -75,31 +75,34 @@ export function VaultHeader(props: VaultHeaderProps) {
             type="button"
             className={styles.ghostAction}
             onClick={onRefreshCredentials}
+            title={t('auth_files.refresh_all_button')}
             disabled={
               disableControls || loading || refreshingCredentials || credentialRefreshDisabled
             }
           >
             {refreshingCredentials ? <LoadingSpinner size={14} /> : <IconRefreshCw size={14} />}
-            {t('auth_files.refresh_all_button')}
+            <span className={styles.actionLabel}>{t('auth_files.refresh_all_button')}</span>
           </button>
         )}
         <button
           type="button"
-          className={styles.ghostAction}
+          className={`${styles.ghostAction} ${styles.iconOnly}`}
           onClick={onRefresh}
           disabled={loading || refreshing}
+          title={t('common.refresh')}
+          aria-label={t('common.refresh')}
         >
           <IconRefreshCw size={14} className={refreshing ? styles.spinning : undefined} />
-          {t('common.refresh')}
         </button>
         <button
           type="button"
           className={styles.primaryAction}
           onClick={onUpload}
+          title={t('auth_files.upload_button')}
           disabled={disableControls || uploading}
         >
           {uploading ? <LoadingSpinner size={14} /> : <IconUpload size={15} />}
-          {t('auth_files.upload_button')}
+          <span className={styles.actionLabel}>{t('auth_files.upload_button')}</span>
         </button>
       </div>
     </header>

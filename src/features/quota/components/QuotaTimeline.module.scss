@@ -1,5 +1,6 @@
 @use '../../../styles/variables' as *;
 @use '../../../styles/mixins' as *;
+@use '../../../styles/controls' as controls;
 
 // Fixed-width lane column so every row's bars start at the same x — the whole
 // point of the chart is comparing when lanes end relative to each other.
@@ -28,7 +29,7 @@ $lane-width: 210px;
 
 .range {
   margin: 2px 0 0;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-quaternary);
   font-variant-numeric: tabular-nums;
 }
@@ -42,38 +43,13 @@ $lane-width: 210px;
 
 .nav,
 .modes {
-  display: inline-flex;
-  align-items: center;
-  gap: 2px;
-  padding: 3px;
-  background: var(--bg-tertiary);
-  border: 1px solid var(--border-color);
-  border-radius: $radius-pill;
+  @include controls.segmented;
 
   button {
-    padding: 4px 12px;
-    font: inherit;
-    font-size: 13px;
-    color: var(--text-secondary);
-    background: transparent;
-    border: 1px solid transparent;
-    border-radius: $radius-pill;
-    cursor: pointer;
-    transition: all $transition-fast;
-
-    &:hover:not(:disabled) {
-      color: var(--text-primary);
-    }
-
-    &:disabled {
-      opacity: 0.5;
-      cursor: default;
-    }
+    @include controls.segment;
 
     &[aria-pressed='true'] {
-      background: var(--floating-surface, var(--bg-primary));
-      border-color: var(--border-hover);
-      color: var(--text-primary);
+      @include controls.segment-active;
     }
   }
 }
@@ -91,7 +67,7 @@ $lane-width: 210px;
   place-items: center;
   padding: $spacing-lg;
   color: var(--text-quaternary);
-  font-size: 12px;
+  font-size: 13px;
   text-align: center;
 }
 
@@ -107,10 +83,8 @@ $lane-width: 210px;
 
 .axisLabel {
   padding: 8px 12px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
   color: var(--text-quaternary);
   display: flex;
   align-items: flex-end;
@@ -141,13 +115,13 @@ $lane-width: 210px;
 }
 
 .axisWeekday {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-quaternary);
   min-height: 12px;
 }
 
 .axisDate {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text-secondary);
   font-variant-numeric: tabular-nums;
@@ -197,8 +171,8 @@ $lane-width: 210px;
 .lanePeriod {
   flex: none;
   padding: 0 6px;
-  border-radius: $radius-pill;
-  font-size: 12px;
+  border-radius: $radius-md;
+  font-size: 13px;
   font-weight: 500;
   color: var(--count-badge-text, var(--text-secondary));
   background: var(--count-badge-bg, var(--bg-tertiary));
@@ -213,7 +187,7 @@ $lane-width: 210px;
 .laneLimit {
   padding: 1px 6px;
   border-radius: $radius-sm;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-quaternary);
   background: var(--bg-tertiary);
 
@@ -264,9 +238,9 @@ $lane-width: 210px;
   display: flex;
   align-items: center;
   padding: 0 8px;
-  border-radius: $radius-pill;
+  border-radius: $radius-md;
   overflow: hidden;
-  font-size: 12px;
+  font-size: 13px;
   white-space: nowrap;
   position: absolute;
 }
@@ -318,7 +292,7 @@ $lane-width: 210px;
   bottom: 6px;
   width: 2px;
   transform: translateX(-50%);
-  border-radius: $radius-pill;
+  border-radius: $radius-md;
   background: var(--amber-color);
   box-shadow: 0 0 0 1px var(--bg-primary);
   cursor: help;
@@ -332,7 +306,7 @@ $lane-width: 210px;
   position: relative;
   z-index: 2;
   padding-left: 10px;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-quaternary);
 }
 
@@ -341,7 +315,7 @@ $lane-width: 210px;
   align-items: center;
   flex-wrap: wrap;
   gap: $spacing-md;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-quaternary);
 }
 
@@ -354,7 +328,7 @@ $lane-width: 210px;
 .swatch {
   width: 22px;
   height: 10px;
-  border-radius: $radius-pill;
+  border-radius: $radius-md;
 }
 
 .swatchLive {
@@ -373,7 +347,7 @@ $lane-width: 210px;
 .swatchCredit {
   width: 2px;
   height: 14px;
-  border-radius: $radius-pill;
+  border-radius: $radius-md;
   background: var(--amber-color);
 }
 

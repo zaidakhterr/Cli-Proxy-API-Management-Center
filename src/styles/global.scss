@@ -13,9 +13,6 @@
 body {
   background-color: var(--bg-secondary);
   color: var(--text-primary);
-  transition:
-    background-color $transition-normal,
-    color $transition-normal;
 }
 
 html.modal-open,
@@ -39,9 +36,27 @@ body.modal-open .content {
 
 ::-webkit-scrollbar-thumb {
   background: var(--border-color);
-  border-radius: $radius-pill;
+  border-radius: $radius-md;
 
   &:hover {
     background: var(--border-hover);
   }
+}
+
+// No motion anywhere: state changes are instant. Loading spinners keep their spin keyframes.
+*,
+*::before,
+*::after {
+  transition: none !important;
+  scroll-behavior: auto !important;
+}
+
+// One focus treatment: a 1px accent ring for keyboard focus only, never on mouse click.
+:focus {
+  outline: none;
+}
+
+:focus-visible {
+  outline: 1px solid var(--accent-color);
+  outline-offset: 1px;
 }

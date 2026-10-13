@@ -60,9 +60,12 @@ export function QuotaHeader(props: QuotaHeaderProps) {
           className={styles.primaryAction}
           onClick={onRefreshAll}
           disabled={disableControls || refreshing}
+          title={t('quota_management.refresh_all_credentials')}
         >
           <IconRefreshCw size={14} className={refreshing ? styles.spinning : undefined} />
-          {t('quota_management.refresh_all_credentials')}
+          <span className={styles.actionLabel}>
+            {t('quota_management.refresh_all_credentials')}
+          </span>
         </button>
       </div>
     </header>

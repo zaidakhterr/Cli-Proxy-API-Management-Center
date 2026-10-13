@@ -10,7 +10,7 @@ import {
   type AriaAttributes,
 } from 'react';
 import { createPortal } from 'react-dom';
-import { IconChevronDown } from './icons';
+import { IconCheck, IconChevronDown } from './icons';
 import styles from './Select.module.scss';
 
 export interface SelectOption {
@@ -35,7 +35,7 @@ interface SelectProps {
 }
 
 const VIEWPORT_MARGIN = 8;
-const DROPDOWN_OFFSET = 6;
+const DROPDOWN_OFFSET = 4;
 const DROPDOWN_MAX_HEIGHT = 240;
 const DROPDOWN_Z_INDEX = 2010;
 
@@ -64,7 +64,8 @@ const resolveDropdownStyle = (element: HTMLElement): CSSProperties => {
         position: 'fixed',
         top: rect.bottom + DROPDOWN_OFFSET,
         left,
-        width,
+        minWidth: width,
+        maxWidth: viewportWidth - VIEWPORT_MARGIN * 2,
         maxHeight,
         zIndex: DROPDOWN_Z_INDEX,
       }
@@ -72,7 +73,8 @@ const resolveDropdownStyle = (element: HTMLElement): CSSProperties => {
         position: 'fixed',
         bottom: viewportHeight - rect.top + DROPDOWN_OFFSET,
         left,
-        width,
+        minWidth: width,
+        maxWidth: viewportWidth - VIEWPORT_MARGIN * 2,
         maxHeight,
         zIndex: DROPDOWN_Z_INDEX,
       };
@@ -302,7 +304,8 @@ export function Select({
               onKeyDown={handleKeyDown}
               onClick={() => commitSelection(index)}
             >
-              {opt.label}
+              <span className={styles.optionLabel}>{opt.label}</span>
+              {active && <IconCheck size={14} className={styles.optionCheck} />}
             </button>
           );
         })}

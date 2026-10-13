@@ -15,7 +15,7 @@
   border-radius: $radius-pill;
   color: var(--text-primary);
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.5;
 }
 
@@ -28,7 +28,7 @@
 .detail {
   flex-shrink: 0;
   color: var(--text-tertiary);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 /* 显式勾选：实线 + primary 染色，读起来是「我选的」。 */
@@ -64,19 +64,6 @@
   background: transparent;
   color: var(--text-tertiary);
   cursor: pointer;
-  transition:
-    background-color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out),
-    color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out),
-    transform var(--dur-press, 160ms) var(--ease-out-strong, ease-out);
-
-  &:active:not(:disabled) {
-    transform: scale(0.9);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 1px;
-  }
 
   &:disabled {
     cursor: not-allowed;
@@ -92,10 +79,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .remove {
-    transition: none;
-  }
-
   .remove:active:not(:disabled) {
     transform: none;
   }

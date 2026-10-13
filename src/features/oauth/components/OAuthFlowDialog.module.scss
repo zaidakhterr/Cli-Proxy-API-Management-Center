@@ -12,13 +12,6 @@
   transform-origin: 50% 45%;
 
   /* 全局 modal 是回弹放大 + 收缩到 0；这里换成 Premium 档：无回弹、退出更快 */
-  &:global(.modal-entering) {
-    animation: oauth-dialog-in 280ms var(--ease-out-strong, ease-out) both;
-  }
-
-  &:global(.modal-closing) {
-    animation: oauth-dialog-out 180ms cubic-bezier(0.4, 0, 1, 1) both;
-  }
 
   :global(.modal-header) {
     padding: 22px 64px 6px 24px;
@@ -35,28 +28,6 @@
     padding: 0;
     border-top: 1px solid var(--border-color);
     background: color-mix(in srgb, var(--bg-secondary) 60%, var(--bg-primary));
-  }
-}
-
-@keyframes oauth-dialog-in {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 10px, 0) scale(0.97);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-@keyframes oauth-dialog-out {
-  from {
-    opacity: 1;
-    transform: none;
-  }
-  to {
-    opacity: 0;
-    transform: scale(0.98);
   }
 }
 
@@ -107,24 +78,12 @@
 
 .headingCaption {
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.02em;
   color: var(--text-tertiary);
 }
 
 /* ---------- 视图切换：容器先落定，内容随后 60ms 淡入（次级运动） ---------- */
-
-.view {
-  animation: oauth-view-in 220ms var(--ease-out-strong, ease-out) 60ms backwards;
-}
-
-@keyframes oauth-view-in {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 4px, 0);
-  }
-}
 
 .stack {
   display: flex;
@@ -154,12 +113,6 @@
   text-decoration-color: color-mix(in srgb, var(--text-primary) 30%, transparent);
   text-underline-offset: 3px;
   border-radius: 2px;
-  transition: text-decoration-color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out);
-
-  &:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-  }
 }
 
 .alert {
@@ -218,7 +171,7 @@
   border: 1px solid var(--border-primary);
   background: var(--bg-primary);
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 1;
   color: var(--text-secondary);
@@ -255,16 +208,15 @@
   border-radius: $radius-pill;
   border: 1px solid var(--border-color);
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.03em;
   line-height: 1.5;
   color: var(--text-tertiary);
 }
 
 .stepHint {
   margin: -4px 0 0;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.6;
   color: var(--text-tertiary);
   overflow-wrap: anywhere;
@@ -288,7 +240,7 @@
   flex: 1;
   min-width: 0;
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1;
   @include text-ellipsis;
 }
@@ -306,7 +258,7 @@
   flex: 1;
   height: 10px;
   margin-right: 8px;
-  border-radius: $radius-pill;
+  border-radius: $radius-md;
   background: linear-gradient(
     90deg,
     var(--bg-tertiary) 0%,
@@ -314,16 +266,6 @@
     var(--bg-tertiary) 100%
   );
   background-size: 200% 100%;
-  animation: oauth-skeleton 1.2s linear infinite;
-}
-
-@keyframes oauth-skeleton {
-  from {
-    background-position: 100% 0;
-  }
-  to {
-    background-position: -100% 0;
-  }
 }
 
 /* ---------- 设备码 ---------- */
@@ -341,10 +283,9 @@
   border: 1px dashed var(--border-primary);
   background: var(--bg-secondary);
   font-family: $font-mono;
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.2;
-  letter-spacing: 0.14em;
   color: var(--text-primary);
   user-select: all;
 }
@@ -364,7 +305,7 @@
   padding: 0 12px;
   border-radius: 2px;
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
 
   &:disabled {
     cursor: not-allowed;
@@ -375,7 +316,7 @@
 .feedbackError,
 .feedbackSuccess {
   margin: -2px 0 0;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.55;
   overflow-wrap: anywhere;
 }
@@ -404,29 +345,10 @@
   font-weight: 500;
   line-height: 1;
   white-space: nowrap;
-  transition:
-    transform var(--dur-press, 160ms) var(--ease-out-strong, ease-out),
-    background-color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out),
-    border-color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out),
-    box-shadow var(--dur-hover, 200ms) var(--ease-out-strong, ease-out),
-    color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out);
-
-  &:focus {
-    outline: none;
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-  }
 
   &:disabled {
     cursor: not-allowed;
     opacity: 0.5;
-  }
-
-  &:active:not(:disabled) {
-    transform: scale(0.97);
   }
 }
 
@@ -455,7 +377,6 @@
 @media (hover: hover) and (pointer: fine) {
   .primary:hover:not(:disabled) {
     background: color-mix(in srgb, var(--text-primary) 86%, var(--bg-secondary));
-    box-shadow: 0 10px 22px -10px color-mix(in srgb, var(--text-primary) 45%, transparent);
   }
 
   .secondary:hover:not(:disabled) {
@@ -501,9 +422,8 @@
   min-width: 0;
   margin: 0;
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.01em;
   color: var(--text-primary);
 }
 
@@ -528,18 +448,6 @@
     border-radius: 50%;
     border: 1px solid currentColor;
     opacity: 0;
-    animation: oauth-ring 1.8s var(--ease-out-strong, ease-out) infinite;
-  }
-}
-
-@keyframes oauth-ring {
-  0% {
-    opacity: 0.55;
-    transform: scale(0.5);
-  }
-  100% {
-    opacity: 0;
-    transform: scale(1.4);
   }
 }
 
@@ -547,14 +455,10 @@
   color: var(--viz-failure);
 }
 
-.statusBar[data-tone='error'] .statusDot::after {
-  animation: none;
-}
-
 .statusAside {
   flex-shrink: 0;
   padding-right: 10px;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-tertiary);
   text-align: right;
 }
@@ -583,7 +487,6 @@
   stroke-width: 1.5;
   transform-origin: center;
   transform-box: fill-box;
-  animation: oauth-ring-in 320ms var(--ease-out-strong, ease-out) backwards;
 }
 
 .successCheck {
@@ -594,20 +497,6 @@
   stroke-linejoin: round;
   stroke-dasharray: 34;
   stroke-dashoffset: 0;
-  animation: oauth-check-draw 360ms var(--ease-out-strong, ease-out) 160ms backwards;
-}
-
-@keyframes oauth-ring-in {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-}
-
-@keyframes oauth-check-draw {
-  from {
-    stroke-dashoffset: 34;
-  }
 }
 
 .resultTitle {
@@ -664,49 +553,9 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  :global(.modal).dialog {
-    &:global(.modal-entering) {
-      animation: oauth-fade-in 160ms ease both;
-    }
-
-    &:global(.modal-closing) {
-      animation: oauth-fade-out 140ms ease both;
-    }
-  }
-
-  .view,
-  .successRing,
-  .successCheck,
-  .urlSkeleton,
-  .statusDot::after {
-    animation: none;
-  }
-
-  .spinning {
-    animation-duration: 1.6s;
-  }
-
-  .primary,
-  .secondary,
-  .ghost {
-    transition: none;
-  }
-
   .primary:active:not(:disabled),
   .secondary:active:not(:disabled),
   .ghost:active:not(:disabled) {
     transform: none;
-  }
-}
-
-@keyframes oauth-fade-in {
-  from {
-    opacity: 0;
-  }
-}
-
-@keyframes oauth-fade-out {
-  to {
-    opacity: 0;
   }
 }

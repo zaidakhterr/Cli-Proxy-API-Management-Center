@@ -225,7 +225,8 @@ describe('cooldown section rendering', () => {
 
     const available = render(snapshot, { onReset: () => {} });
     expect(available).toContain(i18n.t('auth_files.cooldown_reset_button'));
-    expect(available).toContain(i18n.t('auth_files.cooldown_reset_hint'));
+    // Static markup escapes the apostrophe in the hint's title attribute.
+    expect(available).toContain(i18n.t('auth_files.cooldown_reset_hint').replace(/'/g, '&#x27;'));
     expect(available).not.toContain('disabled=""');
 
     const pending = render(snapshot, { onReset: () => {}, resetting: true });
@@ -243,10 +244,7 @@ describe('cooldown section rendering', () => {
   });
 
   test('translates every new label in all four locales, including future reasons', () => {
-    const reference = i18n.getResource('en', 'translation', 'auth_files') as Record<
-      string,
-      string
-    >;
+    const reference = i18n.getResource('en', 'translation', 'auth_files') as Record<string, string>;
     const keys = Object.keys(reference).filter(
       (key) => key.startsWith('cooldown_') || key.startsWith('card_')
     );

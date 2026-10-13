@@ -16,24 +16,7 @@
   border-radius: 2px;
   border: 1px solid var(--border-color);
   background: color-mix(in srgb, var(--bg-primary) 82%, transparent);
-  transition:
-    transform var(--dur-press, 160ms) var(--ease-out-strong, ease-out),
-    border-color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out),
-    box-shadow var(--dur-hover, 200ms) var(--ease-out-strong, ease-out);
   /* backwards：只在延迟期间持有起始帧，结束后不压住 hover/press 的 transform */
-  animation: oauth-tile-in 0.45s var(--ease-out-strong, ease-out) backwards;
-  animation-delay: var(--tile-delay, 0ms);
-
-  &:active {
-    transform: scale(0.985);
-  }
-}
-
-@keyframes oauth-tile-in {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 12px, 0);
-  }
 }
 
 /* 进行中的磁贴边框略加深：扫一眼就能找到「还没完成」的那个 */
@@ -90,15 +73,6 @@
     inset: 0;
     border-radius: 2px;
   }
-
-  &:focus {
-    outline: none;
-  }
-
-  &:focus-visible::after {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-  }
 }
 
 .caption {
@@ -107,10 +81,9 @@
   gap: 6px;
   min-width: 0;
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   line-height: 1.4;
-  letter-spacing: 0.02em;
   color: var(--text-tertiary);
   white-space: nowrap;
 }
@@ -142,22 +115,12 @@
   color: var(--text-primary);
 }
 
-.tile[data-status='waiting'] .statusDot {
-  animation: oauth-dot-breathe 1.6s ease-in-out infinite;
-}
-
 .tile[data-status='success'] .status {
   color: var(--viz-success);
 }
 
 .tile[data-status='error'] .status {
   color: var(--viz-failure);
-}
-
-@keyframes oauth-dot-breathe {
-  50% {
-    opacity: 0.3;
-  }
 }
 
 /* ---------- 尾部「+」：hover 时墨色填充，暗示「添加一个凭证」 ---------- */
@@ -171,39 +134,16 @@
   border-radius: 50%;
   border: 1px solid var(--border-color);
   color: var(--text-tertiary);
-  transition:
-    background-color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out),
-    border-color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out),
-    color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out);
 }
 
 @media (hover: hover) and (pointer: fine) {
   .tile:hover {
-    transform: translateY(-1px);
     border-color: var(--border-hover);
-    box-shadow: 0 12px 26px -16px rgb(0 0 0 / 0.18);
   }
 
   .tile:hover .trail {
     background: var(--text-primary);
     border-color: var(--text-primary);
     color: var(--bg-secondary);
-  }
-
-  .tile:active {
-    transform: scale(0.985);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .tile {
-    animation: none;
-    transition:
-      border-color var(--dur-hover, 200ms) ease,
-      box-shadow var(--dur-hover, 200ms) ease;
-  }
-
-  .tile[data-status='waiting'] .statusDot {
-    animation: none;
   }
 }

@@ -19,7 +19,6 @@
   font: inherit;
   text-align: left;
   cursor: pointer;
-  transition: background $transition-fast;
 
   &:last-child {
     border-right: 0;
@@ -27,11 +26,6 @@
 
   &:hover {
     background: color-mix(in srgb, var(--text-primary) 4%, transparent);
-  }
-
-  &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--text-primary) 30%, transparent);
-    outline-offset: -2px;
   }
 }
 
@@ -54,7 +48,7 @@
 
 .count {
   margin-left: auto;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-tertiary);
 }
 
@@ -72,12 +66,12 @@
 }
 
 .label {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-secondary);
 }
 
 .value {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-tertiary);
   white-space: nowrap;
 
@@ -121,7 +115,7 @@
 }
 
 .reset {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-tertiary);
 }
 

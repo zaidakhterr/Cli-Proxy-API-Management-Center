@@ -8,23 +8,6 @@
   justify-content: center;
   flex-shrink: 0;
   color: var(--text-secondary);
-  transition:
-    transform var(--dur-press, 160ms) var(--ease-out-strong, ease-out),
-    background-color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out),
-    color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out);
-
-  &:focus {
-    outline: none;
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-  }
-
-  &:active {
-    transform: scale(0.94);
-  }
 
   &[data-copied='true'] {
     color: var(--viz-success);
@@ -43,7 +26,7 @@
   gap: 6px;
   height: 32px;
   padding: 0 12px;
-  border-radius: $radius-pill;
+  border-radius: $radius-md;
   border: 1px solid var(--border-color);
   font-size: 13px;
   font-weight: 500;
@@ -71,10 +54,6 @@
 
   > svg {
     grid-area: 1 / 1;
-    transition:
-      opacity 180ms var(--ease-out-strong, ease-out),
-      transform 180ms var(--ease-out-strong, ease-out),
-      filter 180ms var(--ease-out-strong, ease-out);
   }
 }
 
@@ -106,18 +85,12 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .icon,
-  .labeled {
-    transition: none;
-  }
-
   .icon:active,
   .labeled:active {
     transform: none;
   }
 
   .glyphs > svg {
-    transition: opacity 120ms ease;
     transform: none;
     filter: none;
   }

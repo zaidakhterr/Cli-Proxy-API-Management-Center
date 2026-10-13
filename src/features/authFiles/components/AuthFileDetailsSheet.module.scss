@@ -35,10 +35,8 @@
 
 .label {
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--text-tertiary);
 }
 
@@ -47,7 +45,7 @@
   box-sizing: border-box;
   resize: vertical;
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.55;
   color: var(--text-secondary);
   background: var(--bg-secondary);
@@ -56,9 +54,7 @@
   padding: 10px 12px;
 
   &:focus {
-    outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px var(--primary-10);
   }
 }
 
@@ -71,7 +67,7 @@
   max-height: 240px;
   overflow: auto;
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.55;
   color: var(--text-secondary);
   background: var(--bg-secondary);
@@ -98,8 +94,6 @@
   }
 
   &:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
     border-radius: 2px;
   }
 }

@@ -26,7 +26,7 @@ describe('quota toolbar presentation contracts', () => {
     expect(sortStart).toBeGreaterThan(searchStart);
     expect(styles).toMatch(/\.toolbar\s*\{[^}]*flex-wrap: wrap;/);
     expect(styles).toContain('&:focus-within');
-    expect(styles).toContain('&:focus-visible');
-    expect(styles).toContain('@media (prefers-reduced-motion: reduce)');
+    // The sort control is the shared Select; focus rings are global and there is no motion.
+    expect(styles).not.toContain("button[aria-haspopup='listbox']");
   });
 });

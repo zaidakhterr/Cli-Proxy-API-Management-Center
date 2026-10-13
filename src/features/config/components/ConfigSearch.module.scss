@@ -50,14 +50,6 @@
     0 14px 32px color-mix(in srgb, var(--text-primary) 16%, transparent)
   );
   transform-origin: top center;
-  animation: config-search-in var(--dur-press, 160ms) var(--ease-out-strong, ease-out) both;
-}
-
-@keyframes config-search-in {
-  from {
-    opacity: 0;
-    transform: translateY(-4px);
-  }
 }
 
 .searchResultItem {
@@ -70,7 +62,6 @@
   padding: 9px 10px;
   border-radius: 2px;
   text-align: left;
-  transition: background-color $transition-fast;
 
   &:hover {
     background: color-mix(in srgb, var(--text-primary) 6%, transparent);
@@ -95,7 +86,7 @@
 
 .searchResultQualifier {
   color: var(--text-tertiary);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   white-space: nowrap;
 }
@@ -103,7 +94,7 @@
 .searchResultSection {
   flex: 0 0 auto;
   color: var(--text-secondary);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   white-space: nowrap;
 }
@@ -119,15 +110,5 @@
   .searchBox {
     max-width: none;
     flex-basis: 100%;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .searchResults {
-    animation: none;
-  }
-
-  .searchResultItem {
-    transition: none;
   }
 }

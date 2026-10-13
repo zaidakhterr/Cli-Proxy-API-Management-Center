@@ -20,14 +20,6 @@
   border-radius: 2px;
   border: 1px solid transparent;
   cursor: pointer;
-  transition:
-    background-color $transition-fast,
-    border-color $transition-fast,
-    transform var(--dur-press, 160ms) var(--ease-out-strong, ease-out);
-
-  &:active {
-    transform: scale(0.99);
-  }
 }
 
 @media (hover: hover) and (pointer: fine) {
@@ -50,17 +42,15 @@
 }
 
 .modelDisplayName {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-tertiary);
   @include text-ellipsis;
 }
 
 .modelType {
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
   color: var(--text-tertiary);
   padding: 1px 6px;
   border-radius: $radius-pill;
@@ -69,7 +59,7 @@
 
 .excludedBadge {
   margin-left: auto;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--failure-badge-text);
   background: var(--failure-badge-bg);
@@ -80,10 +70,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .item {
-    transition: none;
-  }
-
   .item:active {
     transform: none;
   }

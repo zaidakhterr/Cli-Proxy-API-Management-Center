@@ -21,16 +21,6 @@
 
 /* 首载入场：0.45s 强减速上浮（与全站卡片入场同拍），排在头部级联
    （标题 0 / meta 70 / 动作 140 / 工具栏 210 / tabs 280ms）之后收尾，仅首载播一次 */
-.cardEnter {
-  animation: config-card-in 0.45s var(--ease-out-strong, ease-out) 0.32s backwards;
-}
-
-@keyframes config-card-in {
-  from {
-    opacity: 0;
-    transform: translate3d(0, 24px, 0);
-  }
-}
 
 .header {
   display: grid;
@@ -64,10 +54,9 @@
   border-radius: 2px;
   color: var(--text-secondary);
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.08em;
 }
 
 .iconBadge {
@@ -91,7 +80,7 @@
 .title {
   margin: 0;
   color: var(--text-primary);
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   line-height: 1.18;
   letter-spacing: -0.01em;
@@ -115,10 +104,4 @@
   gap: 16px;
   width: 100%;
   min-width: 0;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .cardEnter {
-    animation: none;
-  }
 }

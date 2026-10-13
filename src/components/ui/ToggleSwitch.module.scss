@@ -30,14 +30,9 @@
   background: var(--border-primary);
   border-radius: 2px;
   position: relative;
-  transition: background-color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out);
 }
 
 /* 隐藏的原生 checkbox 仍是焦点载体：键盘聚焦时把焦点环画到轨道上。 */
-.root input:focus-visible + .track {
-  outline: 2px solid var(--accent-color);
-  outline-offset: 2px;
-}
 
 .disabled .track {
   opacity: 0.5;
@@ -51,7 +46,6 @@
   height: 10px;
   background: #fff;
   border-radius: 1px;
-  transition: transform var(--dur-hover, 200ms) var(--ease-out-strong, ease-out);
 }
 
 .root input:checked + .track {
@@ -66,11 +60,4 @@
   color: var(--text-primary);
   font-size: $text-label;
   font-weight: 500;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .track,
-  .thumb {
-    transition: none;
-  }
 }

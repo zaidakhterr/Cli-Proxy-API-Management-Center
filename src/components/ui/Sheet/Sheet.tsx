@@ -34,7 +34,7 @@ interface SheetProps {
   confirmClose?: () => boolean | Promise<boolean>;
 }
 
-const CLOSE_ANIMATION_DURATION = 280;
+const CLOSE_ANIMATION_DURATION = 0;
 const SIZE_CLASS: Record<SheetSize, string> = {
   md: styles.sizeMd,
   lg: styles.sizeLg,

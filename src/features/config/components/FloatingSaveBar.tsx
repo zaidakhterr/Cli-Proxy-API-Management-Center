@@ -1,18 +1,11 @@
-import { useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { createPortal } from 'react-dom';
 import { useTranslation } from 'react-i18next';
-import { animate } from 'motion/mini';
 import { LoadingSpinner } from '@/components/ui/LoadingSpinner';
 import { IconCheck } from '@/components/ui/icons';
-import { prefersReducedMotion } from '@/hooks/motion';
 import { useActionBarHeightVar } from '@/hooks/useActionBarHeightVar';
 import type { ConfigStatusTone } from '../uiState';
 import styles from './FloatingSaveBar.module.scss';
-
-const easeOutQuart = (progress: number) => 1 - (1 - progress) ** 4;
-const easeInCubic = (progress: number) => progress ** 3;
-const BASE_TRANSFORM = 'translateX(-50%)';
-const HIDDEN_TRANSFORM = 'translateX(-50%) translateY(56px)';
 
 export type FloatingSaveBarProps = {
   /** 有未保存修改时可见（与未保存离开守卫的 block 条件一致）。 */
@@ -47,86 +40,12 @@ export function FloatingSaveBar(props: FloatingSaveBarProps) {
 
   const [mounted, setMounted] = useState(false);
   const containerRef = useRef<HTMLDivElement | null>(null);
-  const animationRef = useRef<ReturnType<typeof animate> | null>(null);
-  const visibleRef = useRef(visible);
-  const previousVisibleRef = useRef(false);
 
   useActionBarHeightVar(containerRef, '--config-action-bar-height', mounted);
 
   useEffect(() => {
-    visibleRef.current = visible;
-    if (visible) setMounted(true);
+    setMounted(visible);
   }, [visible]);
-
-  useLayoutEffect(() => {
-    if (!mounted) return;
-    const el = containerRef.current;
-    if (!el) return;
-    const wasVisible = previousVisibleRef.current;
-
-    animationRef.current?.stop();
-    animationRef.current = null;
-
-    const reduced = prefersReducedMotion();
-
-    if (visible && !wasVisible) {
-      if (reduced) {
-        el.style.transform = BASE_TRANSFORM;
-        animationRef.current = animate(
-          el,
-          { opacity: [0, 1] },
-          {
-            duration: 0.15,
-            ease: 'linear',
-            onComplete: () => {
-              el.style.opacity = '1';
-            },
-          }
-        );
-      } else {
-        animationRef.current = animate(
-          el,
-          { transform: [HIDDEN_TRANSFORM, BASE_TRANSFORM], opacity: [0, 1] },
-          {
-            duration: 0.28,
-            ease: easeOutQuart,
-            onComplete: () => {
-              el.style.transform = BASE_TRANSFORM;
-              el.style.opacity = '1';
-            },
-          }
-        );
-      }
-    } else if (!visible && wasVisible) {
-      const finishExit = () => {
-        if (!visibleRef.current) setMounted(false);
-      };
-      if (reduced) {
-        el.style.transform = BASE_TRANSFORM;
-        animationRef.current = animate(
-          el,
-          { opacity: [1, 0] },
-          { duration: 0.12, ease: 'linear', onComplete: finishExit }
-        );
-      } else {
-        animationRef.current = animate(
-          el,
-          { transform: [BASE_TRANSFORM, HIDDEN_TRANSFORM], opacity: [1, 0] },
-          { duration: 0.22, ease: easeInCubic, onComplete: finishExit }
-        );
-      }
-    }
-
-    previousVisibleRef.current = visible;
-  }, [mounted, visible]);
-
-  useEffect(
-    () => () => {
-      animationRef.current?.stop();
-      animationRef.current = null;
-    },
-    []
-  );
 
   if (!mounted || typeof document === 'undefined') return null;
 

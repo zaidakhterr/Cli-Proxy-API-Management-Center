@@ -38,24 +38,27 @@
   scrollbar-width: none;
   background: var(--bg-primary);
   border-right: 1px solid var(--border-color);
-  transition: width $transition-fast;
 
   &::-webkit-scrollbar {
     display: none;
   }
 }
 
+.sidebar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  min-height: 32px;
+  padding-left: 8px;
+}
+
 .sidebar-brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  padding: 2px 8px;
-  border: 0;
-  background: transparent;
+  min-width: 0;
   color: var(--text-primary);
-  font: inherit;
-  text-align: left;
-  cursor: pointer;
 }
 
 .sidebar-brand-logo {
@@ -88,9 +91,6 @@
   font-size: 13px;
   font-weight: 500;
   text-decoration: none;
-  transition:
-    background $transition-fast,
-    color $transition-fast;
 
   .nav-icon {
     display: inline-flex;
@@ -111,8 +111,7 @@
 
   .nav-badge {
     margin-left: auto;
-    font-family: $font-mono;
-    font-size: 12px;
+    font-size: 13px;
     color: var(--text-tertiary);
   }
 
@@ -124,11 +123,6 @@
   &.active {
     background: color-mix(in srgb, var(--text-primary) 9%, transparent);
     color: var(--text-primary);
-  }
-
-  &:focus-visible {
-    outline: 2px solid color-mix(in srgb, var(--text-primary) 30%, transparent);
-    outline-offset: -2px;
   }
 }
 
@@ -164,7 +158,11 @@
 .app-shell.sidebar-is-collapsed .sidebar {
   width: var(--sidebar-collapsed-width);
 
-  .sidebar-brand,
+  .sidebar-header {
+    justify-content: center;
+    padding-left: 0;
+  }
+
   .nav-item {
     justify-content: center;
     padding-left: 0;
@@ -219,6 +217,14 @@
     flex-direction: column;
   }
 
+  .sidebar-collapse-toggle {
+    display: none !important;
+  }
+
+  .sidebar-header .sidebar-brand {
+    display: flex !important;
+  }
+
   .mobile-topbar {
     position: sticky;
     top: 0;
@@ -243,7 +249,6 @@
     background: rgb(0 0 0 / 0.45);
     opacity: 0;
     pointer-events: none;
-    transition: opacity $transition-fast;
 
     &.visible {
       opacity: 1;
@@ -258,7 +263,6 @@
     z-index: $z-dropdown;
     width: min(260px, calc(100vw - 48px));
     transform: translateX(-100%);
-    transition: transform $transition-fast;
 
     &.open {
       transform: translateX(0);

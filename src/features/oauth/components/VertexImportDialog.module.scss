@@ -25,23 +25,6 @@
   border-radius: 2px;
   background: var(--bg-secondary);
   text-align: left;
-  transition:
-    transform var(--dur-press, 160ms) var(--ease-out-strong, ease-out),
-    border-color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out),
-    background-color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out);
-
-  &:focus {
-    outline: none;
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-  }
-
-  &:active {
-    transform: scale(0.99);
-  }
 
   &[data-dragging='true'] {
     border-style: solid;
@@ -95,7 +78,7 @@
 }
 
 .dropHint {
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.5;
   color: var(--text-tertiary);
 }
@@ -118,7 +101,7 @@
   }
 
   :global(.hint) {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--text-tertiary);
   }
 }
@@ -145,24 +128,20 @@
   }
 
   dt {
-    font-size: 12px;
+    font-size: 13px;
     color: var(--text-tertiary);
   }
 
   dd {
     margin: 0;
     font-family: $font-mono;
-    font-size: 12px;
+    font-size: 13px;
     color: var(--text-primary);
     overflow-wrap: anywhere;
   }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .dropZone {
-    transition: none;
-  }
-
   .dropZone:active {
     transform: none;
   }

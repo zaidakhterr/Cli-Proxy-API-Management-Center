@@ -41,7 +41,7 @@
   }
 
   .labelHint {
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.6;
     color: var(--muted-foreground);
   }
@@ -87,7 +87,7 @@
   .discoveryItem,
   .discoveryBatchLabel,
   .discoveryName {
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.6;
   }
 
@@ -105,7 +105,7 @@
   .discoveryAlias,
   .discoveryCount,
   .discoveryAddedTag {
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.55;
   }
 
@@ -149,7 +149,7 @@
 }
 
 .sectionDesc {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted-foreground);
   line-height: 1.5;
   margin: 0;
@@ -162,13 +162,13 @@
 }
 
 .label {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text-primary);
 }
 
 .labelHint {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted-foreground);
   font-weight: 400;
 }
@@ -191,9 +191,7 @@
   }
 
   &:focus {
-    outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px var(--primary-10);
   }
 
   &:disabled {
@@ -246,11 +244,6 @@
     border-bottom: 2px solid var(--primary-contrast);
     transform: rotate(-45deg) translateY(-2px);
   }
-
-  &:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 2px;
-  }
 }
 
 .checkboxText {
@@ -262,7 +255,7 @@
 
   small {
     color: var(--muted-foreground);
-    font-size: 12px;
+    font-size: 13px;
   }
 }
 
@@ -285,7 +278,7 @@
   color: var(--destructive-color);
   padding: 10px 12px;
   border-radius: var(--radius-md);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.5;
 }
 
@@ -297,7 +290,7 @@
 }
 
 .dt {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted-foreground);
   font-weight: 500;
 }
@@ -305,7 +298,7 @@
 .dd {
   margin: 0;
   margin-top: 2px;
-  font-size: 12px;
+  font-size: 13px;
   font-family: $font-mono;
   color: var(--text-primary);
   word-break: break-word;
@@ -334,7 +327,7 @@
   justify-content: space-between;
   gap: 12px;
   min-width: 0;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--muted-foreground);
 }
@@ -354,8 +347,6 @@
   cursor: pointer;
 
   &:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 3px;
     border-radius: var(--radius-sm);
   }
 }
@@ -431,23 +422,11 @@
   background: transparent;
   color: var(--text-tertiary);
   cursor: pointer;
-  transition:
-    background-color $transition-fast,
-    color $transition-fast;
 
   &:hover {
     background: var(--bg-tertiary);
     color: var(--text-primary);
   }
-
-  &:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: -1px;
-  }
-}
-
-.entryCardChevron {
-  transition: transform $transition-fast;
 }
 
 .entryCardChevronOpen {
@@ -486,9 +465,6 @@
   border-radius: var(--radius-md);
   background: var(--bg-secondary);
   cursor: pointer;
-  transition:
-    border-color $transition-fast,
-    background-color $transition-fast;
 
   input {
     margin: 2px 0 0;
@@ -520,7 +496,7 @@
 
   small {
     font-family: $font-mono;
-    font-size: 12px;
+    font-size: 13px;
     line-height: 1.4;
     color: var(--muted-foreground);
     overflow-wrap: anywhere;
@@ -529,7 +505,7 @@
 
 .sponsorUrlOptionText .sponsorUrlOptionDescription {
   font-family: inherit;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.45;
 }
 
@@ -555,14 +531,14 @@
 }
 
 .sponsorProtocolName {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text-primary);
 }
 
 .sponsorProtocolUrl {
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.4;
   color: var(--muted-foreground);
   overflow-wrap: anywhere;
@@ -586,7 +562,7 @@
   border-radius: var(--radius-md);
   background: color-mix(in srgb, var(--success-color) 8%, var(--bg-primary));
   color: var(--text-primary);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.4;
 }
 
@@ -624,12 +600,9 @@
   border: 1px solid var(--border-color);
   background: var(--bg-primary);
   color: var(--text-primary);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition:
-    background-color $transition-fast,
-    border-color $transition-fast;
 
   &:hover:not(:disabled) {
     border-color: var(--primary-color);
@@ -652,12 +625,9 @@
   border: 1px solid transparent;
   background: transparent;
   color: var(--text-secondary);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition:
-    background-color $transition-fast,
-    color $transition-fast;
 
   &:hover:not(:disabled) {
     background: var(--bg-tertiary);
@@ -676,13 +646,13 @@
   color: var(--destructive-color);
   padding: 8px 10px;
   border-radius: var(--radius-md);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.4;
   word-break: break-word;
 }
 
 .connectivityHintSuccess {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--primary-color);
 }
 
@@ -747,7 +717,7 @@
   border: 1px solid var(--border-color);
   background: var(--bg-primary);
   color: var(--text-primary);
-  font-size: 12px;
+  font-size: 13px;
   box-sizing: border-box;
 
   &::placeholder {
@@ -755,16 +725,14 @@
   }
 
   &:focus {
-    outline: none;
     border-color: var(--primary-color);
-    box-shadow: 0 0 0 3px var(--primary-10);
   }
 }
 
 .discoveryEmpty {
   padding: 16px;
   text-align: center;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted-foreground);
   border: 1px dashed var(--border-color);
   border-radius: var(--radius-md);
@@ -779,13 +747,13 @@
 }
 
 .discoveryBatchLabel {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text-primary);
 }
 
 .discoveryCount {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted-foreground);
   font-variant-numeric: tabular-nums;
 }
@@ -811,7 +779,7 @@
   gap: 8px;
   padding: 8px 10px;
   border-bottom: 1px solid var(--border-color);
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-primary);
 
   &:last-child {
@@ -826,7 +794,7 @@
 
 .discoveryName {
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   word-break: break-all;
 }
 
@@ -838,13 +806,13 @@
 }
 
 .discoveryAlias {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted-foreground);
   word-break: break-all;
 }
 
 .discoveryAddedTag {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted-foreground);
   padding: 2px 8px;
   border-radius: var(--radius-md);
@@ -869,10 +837,9 @@
   border: 1px solid transparent;
   background: var(--primary-color);
   color: var(--primary-contrast);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color $transition-fast;
 
   &:hover:not(:disabled) {
     background: var(--primary-hover);
@@ -917,7 +884,6 @@
   color: var(--text-tertiary);
   cursor: pointer;
   border-radius: var(--radius-sm);
-  transition: color $transition-fast;
 
   &:hover:not(:disabled) {
     color: var(--text-primary);
@@ -985,7 +951,7 @@
 .thinkingExistingHint {
   margin: 0;
   color: var(--warning-color);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.5;
 }
 
@@ -1017,12 +983,12 @@
   min-width: 0;
   flex: 1;
   color: var(--text-secondary);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
 
   code {
     color: var(--muted-foreground);
-    font-size: 12px;
+    font-size: 13px;
     font-weight: 400;
   }
 }
@@ -1063,7 +1029,7 @@
   border: 1px solid var(--border-color);
   background: var(--bg-tertiary);
   color: var(--muted-foreground);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   white-space: nowrap;
   flex-shrink: 0;
@@ -1080,7 +1046,7 @@
   background: var(--bg-primary);
   color: var(--text-secondary);
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
 
   &:hover {
@@ -1099,7 +1065,7 @@
   background: transparent;
   color: var(--destructive-color);
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
 
   &:hover {
     background: var(--destructive-10);
@@ -1121,7 +1087,7 @@
   background: var(--bg-primary);
   color: var(--text-secondary);
   cursor: pointer;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   align-self: flex-start;
 
@@ -1141,7 +1107,6 @@
   font-size: 13px;
   font-weight: 500;
   cursor: pointer;
-  transition: background-color $transition-fast;
   border: 1px solid transparent;
   background: transparent;
   color: var(--text-primary);
@@ -1186,7 +1151,7 @@
 }
 
 .apiKeyEntriesLabel {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text-secondary);
   margin-bottom: 6px;
@@ -1211,7 +1176,7 @@
   background: var(--bg-secondary);
   border: 1px solid var(--border-secondary);
   border-radius: 2px;
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .apiKeyEntryIndex {
@@ -1223,7 +1188,7 @@
   border-radius: 50%;
   background: var(--primary-color);
   color: var(--primary-contrast);
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   flex-shrink: 0;
 }
@@ -1240,7 +1205,7 @@
 
 .apiKeyEntryProxy {
   color: var(--text-tertiary);
-  font-size: 12px;
+  font-size: 13px;
   min-width: 0;
   max-width: 100%;
   overflow-wrap: anywhere;
@@ -1264,7 +1229,7 @@
   gap: 3px;
   padding: 2px 6px;
   border-radius: 2px;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
 
   svg {
