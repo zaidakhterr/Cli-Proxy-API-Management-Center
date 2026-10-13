@@ -17,7 +17,7 @@
 
 .title {
   margin: 0;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.15;
   font-weight: 500;
   letter-spacing: -0.02em;
@@ -28,12 +28,6 @@
   font-family: $font-mono;
   font-size: 13px;
   color: var(--text-secondary);
-
-  &::before {
-    content: '▍';
-    color: var(--viz-success);
-    margin-right: 6px;
-  }
 }
 
 /* ---------- KPI 行 ---------- */
@@ -62,17 +56,8 @@
   border-radius: 2px;
   border: 1px solid var(--border-color);
   background: color-mix(in srgb, var(--bg-primary) 82%, transparent);
-  transition: border-color $transition-fast;
 
   /* 左上角色签：语义色调由 --tile-accent 注入 */
-  &::before {
-    content: '';
-    width: 28px;
-    height: 3px;
-    margin-bottom: 2px;
-    border-radius: $radius-pill;
-    background: var(--tile-accent, var(--border-hover));
-  }
 
   /* 卡片不可点击，因此不抬升不投影——悬停只轻描边框辅助聚焦 */
   @media (hover: hover) and (pointer: fine) {
@@ -80,21 +65,17 @@
       border-color: var(--border-hover);
     }
   }
-
-  @media (prefers-reduced-motion: reduce) {
-    transition: none;
-  }
 }
 
 .statLabel {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text-secondary);
 }
 
 .statValue {
   font-family: $font-mono;
-  font-size: 24px;
+  font-size: 20px;
   line-height: 1.1;
   font-weight: 500;
   letter-spacing: -0.01em;
@@ -107,7 +88,7 @@
 }
 
 .statHint {
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.45;
   color: var(--text-tertiary);
 }
@@ -190,7 +171,7 @@
 }
 
 .fleetMeta {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-tertiary);
 }
 
@@ -219,7 +200,7 @@
 }
 
 .fleetTotalLabel {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-tertiary);
 }
 

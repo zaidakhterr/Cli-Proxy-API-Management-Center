@@ -55,7 +55,7 @@
 
 .server {
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   word-break: break-all;
 }
 
@@ -112,11 +112,5 @@
   }
   to {
     transform: translateX(250%);
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .splashLoaderBar {
-    animation: none;
   }
 }

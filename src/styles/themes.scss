@@ -1,10 +1,8 @@
 /**
  * Theme tokens: Tailwind Zinc neutrals, one blue accent, flat surfaces.
- * 'white' is an old saved theme and now renders as light.
  */
 
-:root,
-[data-theme='white'] {
+:root {
   --bg-secondary: #fafafa; // page
   --bg-primary: #ffffff; // cards, sidebar
   --bg-tertiary: #f4f4f5; // hover, inputs

@@ -16,8 +16,8 @@ import {
   IconSidebarOauth,
   IconSidebarQuota,
   IconSidebarSystem,
+  IconSidebarToggle,
   IconSun,
-  IconThemeAuto,
   IconX,
 } from '@/components/ui/icons';
 import { INLINE_LOGO_JPEG } from '@/assets/logoInline';
@@ -25,7 +25,6 @@ import { useAuthStore, useConfigStore, useNotificationStore, useThemeStore } fro
 import { AUTH_FILES_CHANGED_EVENT } from '@/features/authFiles/authFilesEvents';
 import { triggerHeaderRefresh } from '@/hooks/useHeaderRefresh';
 import { isSidebarToggleShortcut } from '@/utils/sidebarShortcut';
-import type { Theme } from '@/types';
 
 interface NavItem {
   path: string;
@@ -34,8 +33,15 @@ interface NavItem {
   badge?: number;
 }
 
-// The theme button cycles through these; 'white' stays valid for anyone who saved it earlier.
-const THEME_CYCLE: Theme[] = ['auto', 'light', 'dark'];
+const SIDEBAR_COLLAPSED_KEY = 'cli-proxy-sidebar-collapsed';
+
+const readSidebarCollapsed = (): boolean => {
+  try {
+    return window.localStorage.getItem(SIDEBAR_COLLAPSED_KEY) === '1';
+  } catch {
+    return false;
+  }
+};
 
 export function MainLayout() {
   const { t } = useTranslation();
@@ -49,11 +55,11 @@ export function MainLayout() {
   const fetchConfig = useConfigStore((state) => state.fetchConfig);
   const clearCache = useConfigStore((state) => state.clearCache);
 
-  const theme = useThemeStore((state) => state.theme);
-  const setTheme = useThemeStore((state) => state.setTheme);
+  const resolvedTheme = useThemeStore((state) => state.resolvedTheme);
+  const toggleTheme = useThemeStore((state) => state.toggleTheme);
 
   const [sidebarOpen, setSidebarOpen] = useState(false);
-  const [sidebarCollapsed, setSidebarCollapsed] = useState(false);
+  const [sidebarCollapsed, setSidebarCollapsed] = useState(readSidebarCollapsed);
   const [authFilesCount, setAuthFilesCount] = useState<number | null>(null);
   const contentRef = useRef<HTMLDivElement | null>(null);
   const authFilesCountRequestRef = useRef(0);
@@ -130,6 +136,14 @@ export function MainLayout() {
     contentRef.current?.scrollTo({ top: 0 });
   }, [location.pathname]);
 
+  useEffect(() => {
+    try {
+      window.localStorage.setItem(SIDEBAR_COLLAPSED_KEY, sidebarCollapsed ? '1' : '0');
+    } catch {
+      // Storage can be unavailable (private mode); the toggle still works for this visit.
+    }
+  }, [sidebarCollapsed]);
+
   const handleRefreshAll = async () => {
     clearCache();
     const results = await Promise.allSettled([
@@ -151,11 +165,11 @@ export function MainLayout() {
     showNotification(t('notification.data_refreshed'), 'success');
   };
 
-  const cycleTheme = () => {
-    const index = THEME_CYCLE.indexOf(theme);
-    setTheme(THEME_CYCLE[(index + 1) % THEME_CYCLE.length]);
-  };
-  const themeLabel = `${t('theme.switch')}: ${t(`theme.${theme}`)}`;
+  const themeLabel =
+    resolvedTheme === 'dark' ? t('theme.switch_to_light') : t('theme.switch_to_dark');
+  const collapseLabel = sidebarCollapsed
+    ? t('sidebar.toggle_expand')
+    : t('sidebar.toggle_collapse');
 
   const navItems: NavItem[] = [
     { path: '/', labelKey: 'nav.quota_management', icon: <IconSidebarQuota size={18} /> },
@@ -188,17 +202,11 @@ export function MainLayout() {
         className="icon-action"
         variant="ghost"
         size="sm"
-        onClick={cycleTheme}
+        onClick={toggleTheme}
         title={themeLabel}
         aria-label={themeLabel}
       >
-        {theme === 'auto' ? (
-          <IconThemeAuto size={16} />
-        ) : theme === 'dark' ? (
-          <IconMoon size={16} />
-        ) : (
-          <IconSun size={16} />
-        )}
+        {resolvedTheme === 'dark' ? <IconSun size={16} /> : <IconMoon size={16} />}
       </Button>
       <Button
         className="icon-action"
@@ -226,7 +234,6 @@ export function MainLayout() {
           {sidebarOpen ? <IconX size={16} /> : <IconMenu size={16} />}
         </Button>
         <img src={INLINE_LOGO_JPEG} alt="" className="sidebar-brand-logo" />
-        <span className="sidebar-brand-title">{t('title.abbr')}</span>
       </header>
 
       <button
@@ -239,15 +246,25 @@ export function MainLayout() {
       />
 
       <aside className={`sidebar ${sidebarOpen ? 'open' : ''}`}>
-        <button
-          type="button"
-          className="sidebar-brand"
-          onClick={() => setSidebarCollapsed((prev) => !prev)}
-          title={sidebarCollapsed ? t('sidebar.expand') : t('sidebar.collapse')}
-        >
-          <img src={INLINE_LOGO_JPEG} alt="" className="sidebar-brand-logo" />
-          {showLabels && <span className="sidebar-brand-title">{t('title.abbr')}</span>}
-        </button>
+        <div className="sidebar-header">
+          {showLabels && (
+            <div className="sidebar-brand">
+              <img src={INLINE_LOGO_JPEG} alt="" className="sidebar-brand-logo" />
+              <span className="sidebar-brand-title">{t('title.abbr')}</span>
+            </div>
+          )}
+          <Button
+            className="icon-action sidebar-collapse-toggle"
+            variant="ghost"
+            size="sm"
+            onClick={() => setSidebarCollapsed((prev) => !prev)}
+            title={collapseLabel}
+            aria-label={collapseLabel}
+            aria-expanded={!sidebarCollapsed}
+          >
+            <IconSidebarToggle size={16} />
+          </Button>
+        </div>
 
         <nav className="nav-section">
           {navItems.map((item) => {

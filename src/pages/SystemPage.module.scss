@@ -3,7 +3,7 @@
 }
 
 .pageTitle {
-  font-size: 24px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--text-primary);
   margin: 0 0 $spacing-xl 0;
@@ -47,13 +47,8 @@
   color: inherit;
   padding: $spacing-md $spacing-lg;
   cursor: pointer;
-  transition:
-    transform 0.18s ease,
-    border-color 0.2s ease,
-    box-shadow 0.2s ease;
 
   &:hover {
-    transform: translateY(-1px);
     border-color: var(--primary-color);
     box-shadow: 0 8px 18px rgba($primary-color, 0.18);
   }
@@ -84,7 +79,7 @@
 }
 
 .tileValue {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--text-primary);
   line-height: 1.25;
@@ -92,7 +87,7 @@
 }
 
 .tileSub {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-tertiary);
   line-height: 1.4;
 }
@@ -104,7 +99,7 @@
 }
 
 .sectionTitle {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 500;
   color: var(--text-primary);
   margin: 0 0 $spacing-md 0;
@@ -202,7 +197,7 @@
 
 .modelAlias {
   color: var(--text-secondary);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .versionCheck {
@@ -222,7 +217,7 @@
     border-radius: $radius-md;
 
     .label {
-      font-size: 12px;
+      font-size: 13px;
       color: var(--text-secondary);
       margin-bottom: $spacing-xs;
     }

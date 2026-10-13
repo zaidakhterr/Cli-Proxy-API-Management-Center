@@ -43,9 +43,8 @@
   gap: 7px;
   flex-shrink: 0;
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   font-variant-numeric: tabular-nums;
-  letter-spacing: 0.01em;
 }
 
 /* 百分比穿墨色而非填充色 —— 文字不承担状态编码，颜色留给水位条 */
@@ -83,7 +82,7 @@
 
 .quotaMessage {
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.5;
   color: var(--text-tertiary);
   text-align: center;
@@ -96,27 +95,18 @@
 
 .quotaBar {
   height: 6px;
-  border-radius: $radius-pill;
+  border-radius: $radius-md;
   background: color-mix(in srgb, var(--text-primary) 8%, transparent);
   overflow: hidden;
 }
 
 .quotaBarFill {
   height: 100%;
-  border-radius: $radius-pill;
+  border-radius: $radius-md;
   /* 刷新时平滑重定向到新水位（可中断） */
-  transition: width 360ms var(--ease-out-strong, ease);
   /* 数据到达是本页的高潮时刻：水位逐行铺开（每行 40ms 级差）。
    * 走 scaleX 而非 width，避免与上面的 width 过渡互相抢夺同一属性。 */
   transform-origin: left center;
-  animation: quota-meter-fill 480ms var(--ease-out-strong, ease-out) both;
-  animation-delay: calc(var(--meter-index, 0) * 40ms);
-}
-
-@keyframes quota-meter-fill {
-  from {
-    transform: scaleX(0);
-  }
 }
 
 .quotaBarFillHigh {
@@ -154,15 +144,13 @@
 
 .antigravityQuotaGroupTitle {
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--text-tertiary);
 }
 
 .antigravityQuotaGroupDescription {
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.4;
   color: var(--text-quaternary);
 }
@@ -182,18 +170,11 @@
   }
 }
 
-@media (prefers-reduced-motion: reduce) {
-  .quotaBarFill {
-    transition: none;
-    animation: none;
-  }
-}
-
 .codexPlan {
   display: flex;
   align-items: center;
   gap: 6px 12px;
-  font-size: 12px;
+  font-size: 13px;
   color: var(--text-secondary);
   flex-wrap: wrap;
 }
@@ -227,7 +208,7 @@
 }
 
 .codexResetCreditsTitle {
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   color: var(--text-secondary);
   line-height: 1.35;
@@ -243,7 +224,7 @@
   border: 1px solid color-mix(in srgb, var(--border-color) 72%, transparent);
   border-radius: $radius-sm;
   background-color: color-mix(in srgb, var(--bg-secondary) 72%, transparent);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.35;
   min-width: 0;
 }
@@ -269,7 +250,7 @@
 }
 
 .codexResetCreditsError {
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.4;
   color: var(--warning-text);
   background-color: var(--warning-bg);

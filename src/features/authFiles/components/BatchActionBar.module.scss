@@ -38,24 +38,12 @@
 
 .count {
   font-family: $font-mono;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   color: var(--text-primary);
   padding-right: 4px;
   white-space: nowrap;
-}
-
-.bar :global(.btn) {
-  transition:
-    transform var(--dur-press, 160ms) var(--ease-out-strong, ease-out),
-    background-color $transition-fast,
-    border-color $transition-fast,
-    color $transition-fast;
-}
-
-.bar :global(.btn:active:not(:disabled)) {
-  transform: scale(0.96);
 }
 
 @include mobile {
@@ -75,10 +63,6 @@
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .bar :global(.btn) {
-    transition: none;
-  }
-
   .bar :global(.btn:active:not(:disabled)) {
     transform: none;
   }

@@ -1,0 +1,124 @@
+// Shared control primitives. Every tab strip and segmented control in the app uses these,
+// so there is exactly one look for each.
+@use './variables.scss' as *;
+
+// Underline tabs: switch between views of the same content.
+@mixin tab-list {
+  display: flex;
+  align-items: stretch;
+  gap: 4px;
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  border-bottom: 1px solid var(--border-color);
+  scrollbar-width: none;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+@mixin tab {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+  height: 36px;
+  padding: 0 8px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: var(--text-secondary);
+  font-size: $text-label;
+  line-height: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+
+  &::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -1px;
+    height: 1px;
+    background: transparent;
+  }
+
+  &:hover:not(:disabled) {
+    color: var(--text-primary);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+@mixin tab-active {
+  color: var(--text-primary);
+
+  &::after {
+    background: var(--text-primary);
+  }
+
+  &:disabled {
+    opacity: 1;
+  }
+}
+
+// Segmented control: pick one option of a setting (filter, mode, window).
+@mixin segmented {
+  display: inline-flex;
+  align-items: stretch;
+  flex-shrink: 0;
+  height: $control-height;
+  padding: 0;
+  gap: 0;
+  border: 1px solid var(--border-color);
+  border-radius: $radius-md;
+  background: var(--bg-primary);
+  overflow: hidden;
+}
+
+@mixin segment {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-width: 0;
+  height: auto;
+  padding: 0 10px;
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: $text-label;
+  line-height: 16px;
+  font-weight: 500;
+  white-space: nowrap;
+  cursor: pointer;
+
+  & + & {
+    border-left: 1px solid var(--border-color);
+  }
+
+  &:hover:not(:disabled) {
+    color: var(--text-primary);
+  }
+
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.5;
+  }
+}
+
+@mixin segment-active {
+  background: var(--bg-tertiary);
+  color: var(--text-primary);
+
+  &:disabled {
+    opacity: 1;
+  }
+}

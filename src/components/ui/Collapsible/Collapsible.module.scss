@@ -28,11 +28,6 @@
   &:hover {
     background: color-mix(in srgb, var(--accent-bg) 35%, transparent);
   }
-
-  &:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: -2px;
-  }
 }
 
 .summaryLabel {
@@ -44,7 +39,7 @@
 }
 
 .summaryHint {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted-foreground);
   font-weight: 400;
 }
@@ -53,7 +48,6 @@
   width: 16px;
   height: 16px;
   color: var(--muted-foreground);
-  transition: transform var(--dur-hover, 200ms) var(--ease-out-strong, ease-out);
   flex-shrink: 0;
 
   .root[open] & {
@@ -73,24 +67,3 @@
 
 /* 展开时内容 160ms 淡入。只做透明度、不做高度动画 ——
    与程序化 details.open = true（搜索跳转强制展开）不会互相打架。 */
-.root[open] > .content,
-.root[open] > .contentFlush {
-  animation: collapsible-content-in var(--dur-press, 160ms) var(--ease-out-strong, ease-out);
-}
-
-@keyframes collapsible-content-in {
-  from {
-    opacity: 0;
-  }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  .chevron {
-    transition: none;
-  }
-
-  .root[open] > .content,
-  .root[open] > .contentFlush {
-    animation: none;
-  }
-}

@@ -1,7 +1,7 @@
 .section {
   border-block: 1px solid var(--border-color);
   color: var(--warning-text);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.5;
 }
 
@@ -17,11 +17,6 @@
 
   &::-webkit-details-marker {
     display: none;
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--primary-color);
-    outline-offset: 3px;
   }
 }
 
@@ -46,7 +41,7 @@
 
 .next {
   color: var(--text-secondary);
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .chevron {
@@ -106,7 +101,7 @@
 .note,
 .unknown {
   color: var(--text-tertiary);
-  font-size: 12px;
+  font-size: 13px;
   line-height: 1.5;
   overflow-wrap: anywhere;
 }

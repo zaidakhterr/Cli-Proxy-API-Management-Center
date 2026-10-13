@@ -1,6 +1,6 @@
 @use '../../../styles/mixins' as *;
 
-$quota-font-size: 12px;
+$quota-font-size: 13px;
 
 /* ============================================================
  * 认证文件卡片的配额区外衣。
@@ -39,7 +39,6 @@ button.quotaMessageAction {
   border: 0;
   background: none;
   color: var(--text-secondary);
-  transition: color $transition-fast;
 
   &:hover:not(:disabled) {
     color: var(--primary-hover);
@@ -149,15 +148,14 @@ button.quotaMessageAction {
 
 .quotaBar {
   height: 6px;
-  border-radius: $radius-pill;
+  border-radius: $radius-md;
   background: color-mix(in srgb, var(--text-primary) 8%, transparent);
   overflow: hidden;
 }
 
 .quotaBarFill {
   height: 100%;
-  border-radius: $radius-pill;
-  transition: width 360ms var(--ease-out-strong, ease);
+  border-radius: $radius-md;
 }
 
 .quotaBarFillHigh {
@@ -256,8 +254,6 @@ button.quotaMessageAction {
   font-family: $font-mono;
   font-size: $quota-font-size;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--text-tertiary);
 }
 
@@ -282,8 +278,6 @@ button.quotaMessageAction {
   font-family: $font-mono;
   font-size: $quota-font-size;
   font-weight: 500;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
   color: var(--text-tertiary);
 }
 
@@ -344,9 +338,3 @@ button.quotaMessageAction {
 }
 
 /* ---------- 降级 ---------- */
-
-@media (prefers-reduced-motion: reduce) {
-  .quotaBarFill {
-    transition: none;
-  }
-}

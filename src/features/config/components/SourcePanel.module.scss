@@ -45,7 +45,7 @@
   border-radius: $radius-pill;
   color: var(--text-secondary);
   font-family: $font-code;
-  font-size: 12px;
+  font-size: 13px;
   font-weight: 500;
   font-variant-numeric: tabular-nums;
   background: color-mix(in srgb, var(--text-primary) 6%, transparent);
@@ -54,25 +54,16 @@
 }
 
 .searchButton {
+  height: $control-height;
   @include button-reset;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 30px;
-  height: 30px;
-  border-radius: $radius-pill;
+  border-radius: $radius-md;
   border: 1px solid var(--text-primary);
   background: var(--text-primary);
   color: var(--bg-secondary);
-  transition:
-    transform var(--dur-press, 160ms) var(--ease-out-strong, ease-out),
-    background-color $transition-fast,
-    border-color $transition-fast,
-    opacity $transition-fast;
-
-  &:active:not(:disabled) {
-    transform: scale(0.94);
-  }
 
   &:disabled {
     opacity: 0.45;
@@ -153,7 +144,6 @@
 
     .cm-searchMatch {
       background: rgba(224, 170, 20, 0.32);
-      outline: 1px solid rgba(224, 170, 20, 0.48);
     }
 
     .cm-searchMatch-selected {
@@ -191,10 +181,6 @@
 /* ---------- 无障碍 ---------- */
 
 @media (prefers-reduced-motion: reduce) {
-  .searchButton {
-    transition: none;
-  }
-
   .searchButton:active:not(:disabled) {
     transform: none;
   }

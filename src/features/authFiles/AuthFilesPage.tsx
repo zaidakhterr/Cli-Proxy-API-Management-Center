@@ -31,7 +31,6 @@ import { OAuthExcludedCard } from '@/features/authFiles/components/OAuthExcluded
 import { OAuthModelAliasCard } from '@/features/authFiles/components/OAuthModelAliasCard';
 import { ProviderTabs } from '@/features/authFiles/components/ProviderTabs';
 import { VaultHeader } from '@/features/authFiles/components/VaultHeader';
-import { VaultPulse } from '@/features/authFiles/components/VaultPulse';
 import { invalidateAuthFileDerivedCaches } from '@/features/authFiles/cacheInvalidation';
 import {
   buildWildcardSearch,
@@ -608,8 +607,6 @@ export function AuthFilesPage() {
         onChange={handleFileChange}
       />
 
-      <VaultPulse files={files} statusBarCache={statusBarCache} />
-
       <section className={styles.workbench} aria-label={t('auth_files.title_section')}>
         <ProviderTabs
           types={existingTypes}
@@ -663,9 +660,9 @@ export function AuthFilesPage() {
         )}
 
         {loading ? (
-          <div className={gridClasses} aria-hidden="true">
+          <div className={styles.skeletonList} aria-hidden="true">
             {Array.from({ length: SKELETON_CARD_COUNT }, (_, index) => (
-              <Skeleton key={index} height={206} rounded={14} />
+              <Skeleton key={index} height={56} rounded={2} />
             ))}
           </div>
         ) : isFirstRunEmpty ? (

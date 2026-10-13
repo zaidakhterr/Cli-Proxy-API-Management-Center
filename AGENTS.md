@@ -11,7 +11,7 @@ This is a React 19 + TypeScript + Vite management frontend for CLI Proxy API, no
 - `src/stores/`: Zustand state. `src/types/`: shared types. `src/styles/`: global styles and theme tokens.
 - `src/App.tsx`: hash-router setup. `src/router/MainRoutes.tsx`: authenticated route table. `ProtectedRoute` and `MainLayout` guard and wrap the authenticated app.
 - `src/assets/`: bundled assets, including provider icons in `icons/`.
-- `src/i18n/locales/`: `en.json`, `zh-CN.json`, `zh-TW.json`, `ru.json`, `vi.json`, and `ko.json`, registered in `src/i18n/index.ts`; fallback language is `zh-CN`. Update all six files when adding or changing translation keys, including accessible labels.
+- `src/i18n/locales/`: `en.json` only, registered in `src/i18n/index.ts`. The UI is English-only; keep user-facing text and accessible labels in it.
 
 ## Build, Test, and Development Commands
 
@@ -50,7 +50,9 @@ Use 2-space indentation, semicolons, single quotes, ES5 trailing commas, and 100
 
 Component files use PascalCase, hooks use `useName`, and API modules use domain names such as `oauth.ts`. SCSS Modules sit beside their page or component as `Name.module.scss`. Vite automatically injects `src/styles/variables.scss` into SCSS; new modules do not need to import it again. Reuse shared components from `src/components/ui/` and existing theme tokens before adding new primitives or hard-coded colors.
 
-Keep user-facing text in i18n. Preserve keyboard interaction, accessible names, focus behavior, and reduced-motion handling when modifying interactive UI. For motion, reuse the timing tokens in `src/styles/themes.scss` (`--ease-out-strong`, `--dur-press`, `--dur-hover`) and the helpers in `src/hooks/motion.ts` (`prefersReducedMotion`, `useRevealOnScroll`, `useRevealGroup`, `useCountUp`) instead of ad hoc durations and easings.
+Keep user-facing text in i18n. Preserve keyboard interaction, accessible names and focus behavior when modifying interactive UI.
+
+The UI has no motion: do not add transitions, keyframe animations, press/hover transforms, count-ups or reveal effects. The only exception is the rotation of loading spinners. `src/hooks/motion.ts` keeps no-op helpers for old call sites; do not reintroduce animation there.
 
 ## Testing & Verification
 

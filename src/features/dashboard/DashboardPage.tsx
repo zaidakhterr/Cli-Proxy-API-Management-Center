@@ -47,7 +47,9 @@ export function DashboardPage() {
         ? 'common.connecting'
         : 'common.disconnected'
   );
-  const versionLabel = serverVersion ? `v${serverVersion.trim().replace(/^[vV]+/, '')}` : null;
+  const cleanVersion = serverVersion?.trim().replace(/^[vV]+/, '') ?? '';
+  // Dev builds report "dev"; showing "vdev" reads like a typo, so skip it.
+  const versionLabel = cleanVersion && cleanVersion !== 'dev' ? `v${cleanVersion}` : null;
 
   const statTiles = [
     {

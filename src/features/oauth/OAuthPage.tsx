@@ -90,7 +90,6 @@ export function OAuthPage() {
     icon: iconOf(card),
   });
 
-
   const tileStatusLabel = (status: ProviderFlowState['status']) =>
     status === 'waiting'
       ? t('auth_login.tile_waiting')
@@ -125,7 +124,8 @@ export function OAuthPage() {
 
   const dialogCard =
     dialog?.kind === 'oauth' ? providerCards.find((card) => card.id === dialog.id) : undefined;
-  const providerCount = providerCards.length;
+  // Vertex import is a separate tile, so it counts as a provider too.
+  const providerCount = providerCards.length + 1;
   const primaryCards = PRIMARY_PROVIDER_IDS.map((id) =>
     providerCards.find((card) => card.id === id)
   ).filter((card): card is OAuthProviderCard => Boolean(card));
@@ -170,7 +170,7 @@ export function OAuthPage() {
             label={VERTEX_LABEL}
             caption={t('vertex_import.file_label')}
             icon={iconVertex}
-            index={providerCount}
+            index={providerCards.length}
             onOpen={openVertex}
           />
         </div>

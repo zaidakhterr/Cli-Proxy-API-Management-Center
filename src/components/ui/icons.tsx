@@ -11,10 +11,10 @@ import {
   ChartBarIcon,
   CheckCircleIcon,
   CheckIcon,
-  CircleHalfIcon,
   CircleNotchIcon,
   CodeIcon,
   CopyIcon,
+  DotsThreeIcon,
   DownloadSimpleIcon,
   EyeIcon,
   EyeSlashIcon,
@@ -33,6 +33,7 @@ import {
   PlusIcon,
   ScrollIcon,
   ShieldCheckIcon,
+  SidebarSimpleIcon,
   SignOutIcon,
   SlidersHorizontalIcon,
   SquaresFourIcon,
@@ -121,5 +122,6 @@ export const IconRefresh = make(ArrowClockwiseIcon as PhosphorComponent, 'IconRe
 export const IconMenu = make(ListIcon as PhosphorComponent, 'IconMenu');
 export const IconSun = make(SunIcon as PhosphorComponent, 'IconSun');
 export const IconMoon = make(MoonIcon as PhosphorComponent, 'IconMoon');
-export const IconThemeAuto = make(CircleHalfIcon as PhosphorComponent, 'IconThemeAuto');
+export const IconSidebarToggle = make(SidebarSimpleIcon as PhosphorComponent, 'IconSidebarToggle');
 export const IconLogout = make(SignOutIcon as PhosphorComponent, 'IconLogout');
+export const IconMore = make(DotsThreeIcon as PhosphorComponent, 'IconMore');

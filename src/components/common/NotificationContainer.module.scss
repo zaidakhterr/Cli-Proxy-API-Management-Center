@@ -39,19 +39,13 @@
   pointer-events: auto;
   opacity: 1;
   transform: translateY(0) scale(1);
-  transition:
-    opacity 200ms var(--ease-out-strong),
-    transform 200ms var(--ease-out-strong);
 
   @starting-style {
     opacity: 0;
-    transform: translateY(-8px) scale(0.98);
   }
 
   &[data-exiting] {
     opacity: 0;
-    transform: translateY(-6px) scale(0.98);
-    transition-duration: 160ms;
     pointer-events: none;
   }
 }
@@ -111,25 +105,12 @@
   color: var(--text-secondary);
   cursor: pointer;
   touch-action: manipulation;
-  transition:
-    background-color 120ms ease,
-    color 120ms ease,
-    transform 120ms var(--ease-out-strong);
 
   @media (hover: hover) and (pointer: fine) {
     &:hover {
       background: var(--bg-tertiary);
       color: var(--text-primary);
     }
-  }
-
-  &:active {
-    transform: scale(0.96);
-  }
-
-  &:focus-visible {
-    outline: 2px solid var(--text-secondary);
-    outline-offset: 2px;
   }
 }
 
@@ -158,7 +139,6 @@
   .notification,
   .notification[data-exiting] {
     transform: none;
-    transition: opacity 120ms ease;
 
     @starting-style {
       transform: none;
@@ -166,8 +146,6 @@
   }
 
   .closeButton {
-    transition: none;
-
     &:active {
       transform: none;
     }

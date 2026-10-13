@@ -13,16 +13,24 @@ const styles = readFileSync(
 );
 
 describe('auth file card presentation contract', () => {
-  test('uses identity rather than logos or duplicate status badges', () => {
+  test('renders a text row led by the account identity, without logos', () => {
     expect(source).not.toContain('<img');
     expect(source).not.toContain('getAuthFileIcon');
-    expect(source).not.toContain('stateBadge');
     expect(source).toContain('<h3');
     expect(source).toContain('{identity.primary}');
-    expect(source).toContain('{identity.secondary}');
+    expect(source).toContain('title={identity.secondary ?? undefined}');
   });
 
-  test('uses one footer toggle and credential-specific accessible names', () => {
+  test('shows a state badge only for disabled, problem and virtual accounts', () => {
+    expect(source).toContain("t('auth_files.status_disabled')");
+    expect(source).toContain("t('auth_files.status_problem')");
+    expect(source).toContain("t('auth_files.type_virtual')");
+    expect(styles).toMatch(
+      /%state-badge\s*\{[^}]*height:\s*\$badge-height;[^}]*border-radius:\s*6px;/
+    );
+  });
+
+  test('uses one trailing toggle and credential-specific accessible names', () => {
     const header = source.split('<header')[1].split('</header>')[0];
     const footer = source.split('<footer')[1].split('</footer>')[0];
     expect(source.match(/<ToggleSwitch/g)).toHaveLength(1);
@@ -35,17 +43,16 @@ describe('auth file card presentation contract', () => {
     expect(footer).toContain('statusUpdating[getAuthFileRefreshKey(file)] === true ||');
     expect(footer).toContain('isManualRefreshing');
     expect(footer).toContain('!isRuntimeOnly &&');
+    expect(footer).toContain("t('auth_files.more_actions', { name: identity.primary })");
   });
 
-  test('dims disabled card content but keeps the re-enable controls clear', () => {
+  test('dims disabled row content but keeps the re-enable controls clear', () => {
     expect(source).toContain("file.disabled === true ? styles.cardDisabled : ''");
-    expect(styles).toMatch(/\.cardDisabled\s*>\s*:not\(\.actions\)\s*\{\s*opacity:\s*0\.68;/);
+    expect(styles).toMatch(/\.cardDisabled \.head,\s*\.cardDisabled \.requests\s*\{\s*opacity:/);
     expect(styles).not.toMatch(/\.cardDisabled\s*\{[^}]*opacity:/);
   });
 
-  test('uses a plain-text weight tooltip while preserving the details link', () => {
-    expect(source).toContain("title={t('auth_files.weight_tooltip')}");
-    expect(source).not.toContain("title={t('auth_files.weight_hint')}");
+  test('keeps the plain-text weight tooltip copy in sync with the details link', () => {
     const detailsSource = readFileSync(
       new URL('../src/features/authFiles/components/AuthFileDetailsSheet.tsx', import.meta.url),
       'utf8'
@@ -58,8 +65,6 @@ describe('auth file card presentation contract', () => {
       ) as { auth_files: Record<string, string> };
       expect(messages.weight_tooltip).toBeTruthy();
       expect(messages.weight_tooltip).not.toMatch(/<[^>]+>/);
-      expect(messages.weight_hint).toContain('<settingsLink>');
-      expect(messages.weight_hint).toContain('</settingsLink>');
       expect(messages.weight_tooltip).toBe(messages.weight_hint.replace(/<\/?settingsLink>/g, ''));
     }
   });
