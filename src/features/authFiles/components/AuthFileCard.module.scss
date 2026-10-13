@@ -11,7 +11,7 @@
   flex-direction: column;
   gap: 12px;
   padding: 16px;
-  border-radius: 14px;
+  border-radius: 2px;
   border: 1px solid var(--border-color);
   background: color-mix(in srgb, var(--bg-primary) 82%, transparent);
   transition: border-color 160ms var(--ease-out-strong, ease-out);
@@ -74,8 +74,8 @@
   gap: 4px 8px;
   min-width: 0;
   margin: 0;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   line-height: 1.6;
 }
 
@@ -84,16 +84,16 @@
   flex-shrink: 0;
   max-width: 100%;
   padding: 4px 10px;
-  border-radius: 12px;
+  border-radius: 2px;
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   line-height: 1.3;
   overflow-wrap: anywhere;
 }
 
 .runtimeLabel {
   margin-left: auto;
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-tertiary);
 }
 
@@ -118,7 +118,7 @@
 .fileName {
   margin: -4px 0 0;
   font-family: $font-mono;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.45;
   color: var(--text-tertiary);
   overflow-wrap: anywhere;
@@ -144,7 +144,7 @@
   color: var(--warning-text);
   background: var(--warning-bg);
   border: 1px solid var(--warning-border);
-  border-radius: 8px;
+  border-radius: 2px;
   padding: 7px 9px;
 
   span {
@@ -176,8 +176,8 @@
 
 .healthLabel {
   font-family: $font-mono;
-  font-size: 10px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 500;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   color: var(--text-tertiary);
@@ -188,8 +188,8 @@
   align-items: baseline;
   gap: 8px;
   font-family: $font-mono;
-  font-size: 11.5px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 500;
   font-variant-numeric: tabular-nums;
 }
 
@@ -247,8 +247,8 @@
 
 .statusRate {
   font-family: $font-mono;
-  font-size: 11.5px;
-  font-weight: 650;
+  font-size: 12px;
+  font-weight: 500;
   font-variant-numeric: tabular-nums;
   color: var(--text-quaternary);
   min-width: 40px;
@@ -278,13 +278,13 @@
   gap: 2px;
   min-width: 150px;
   padding: 8px 10px;
-  border-radius: 10px;
+  border-radius: 2px;
   background: var(--floating-surface);
   border: 1px solid var(--border-color);
   box-shadow: var(--floating-shadow);
   pointer-events: none;
   font-family: $font-mono;
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
 }
 
@@ -331,7 +331,7 @@
   flex-wrap: wrap;
   gap: 4px 7px;
   font-family: $font-mono;
-  font-size: 11.5px;
+  font-size: 12px;
   font-variant-numeric: tabular-nums;
   color: var(--text-tertiary);
 }
@@ -348,8 +348,8 @@
   gap: 4px;
   padding: 2px 6px;
   border: 1px solid transparent;
-  border-radius: $radius-full;
-  font-weight: 650;
+  border-radius: $radius-pill;
+  font-weight: 500;
   line-height: 1.35;
   white-space: nowrap;
 }
@@ -367,8 +367,8 @@
 }
 
 .metaMetricLabel {
-  font-size: 10px;
-  font-weight: 600;
+  font-size: 12px;
+  font-weight: 500;
   color: currentColor;
   opacity: 0.78;
 }
@@ -468,7 +468,7 @@
 }
 
 .toggleLabel {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-tertiary);
   white-space: nowrap;
 }

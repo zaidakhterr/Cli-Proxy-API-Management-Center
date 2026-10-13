@@ -1,10 +1,14 @@
-import { ReactNode, SVGProps, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { ReactNode, useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { NavLink, useLocation } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 import { Button } from '@/components/ui/Button';
 import { MainRoutes } from '@/router/MainRoutes';
 import { authFilesApi } from '@/services/api';
 import {
+  IconLogout,
+  IconMenu,
+  IconMoon,
+  IconRefresh,
   IconSidebarAuthFiles,
   IconSidebarConfig,
   IconSidebarDashboard,
@@ -12,6 +16,9 @@ import {
   IconSidebarOauth,
   IconSidebarQuota,
   IconSidebarSystem,
+  IconSun,
+  IconThemeAuto,
+  IconX,
 } from '@/components/ui/icons';
 import { INLINE_LOGO_JPEG } from '@/assets/logoInline';
 import { useAuthStore, useConfigStore, useNotificationStore, useThemeStore } from '@/stores';
@@ -26,65 +33,6 @@ interface NavItem {
   icon: ReactNode;
   badge?: number;
 }
-
-const iconProps: SVGProps<SVGSVGElement> = {
-  width: 16,
-  height: 16,
-  viewBox: '0 0 24 24',
-  fill: 'none',
-  stroke: 'currentColor',
-  strokeWidth: 2,
-  strokeLinecap: 'round',
-  strokeLinejoin: 'round',
-  'aria-hidden': 'true',
-  focusable: 'false',
-};
-
-const icons = {
-  refresh: (
-    <svg {...iconProps}>
-      <path d="M21 12a9 9 0 1 1-9-9c2.52 0 4.93 1 6.74 2.74L21 8" />
-      <path d="M21 3v5h-5" />
-    </svg>
-  ),
-  menu: (
-    <svg {...iconProps}>
-      <path d="M4 7h16" />
-      <path d="M4 12h16" />
-      <path d="M4 17h16" />
-    </svg>
-  ),
-  close: (
-    <svg {...iconProps}>
-      <path d="M18 6 6 18" />
-      <path d="m6 6 12 12" />
-    </svg>
-  ),
-  sun: (
-    <svg {...iconProps}>
-      <circle cx="12" cy="12" r="4" />
-      <path d="M12 2v2M12 20v2m-7.07-17.07 1.41 1.41m11.32 11.32 1.41 1.41M2 12h2m16 0h2M6.34 17.66l-1.41 1.41M19.07 4.93l-1.41 1.41" />
-    </svg>
-  ),
-  moon: (
-    <svg {...iconProps}>
-      <path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9z" />
-    </svg>
-  ),
-  auto: (
-    <svg {...iconProps}>
-      <circle cx="12" cy="12" r="9" />
-      <path d="M12 3a9 9 0 0 1 0 18z" fill="currentColor" stroke="none" />
-    </svg>
-  ),
-  logout: (
-    <svg {...iconProps}>
-      <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4" />
-      <path d="m16 17 5-5-5-5" />
-      <path d="M21 12H9" />
-    </svg>
-  ),
-};
 
 // The theme button cycles through these; 'white' stays valid for anyone who saved it earlier.
 const THEME_CYCLE: Theme[] = ['auto', 'light', 'dark'];
@@ -234,7 +182,7 @@ export function MainLayout() {
         title={t('header.refresh_all')}
         aria-label={t('header.refresh_all')}
       >
-        {icons.refresh}
+        <IconRefresh size={16} />
       </Button>
       <Button
         className="icon-action"
@@ -244,7 +192,13 @@ export function MainLayout() {
         title={themeLabel}
         aria-label={themeLabel}
       >
-        {theme === 'auto' ? icons.auto : theme === 'dark' ? icons.moon : icons.sun}
+        {theme === 'auto' ? (
+          <IconThemeAuto size={16} />
+        ) : theme === 'dark' ? (
+          <IconMoon size={16} />
+        ) : (
+          <IconSun size={16} />
+        )}
       </Button>
       <Button
         className="icon-action"
@@ -254,7 +208,7 @@ export function MainLayout() {
         title={t('header.logout')}
         aria-label={t('header.logout')}
       >
-        {icons.logout}
+        <IconLogout size={16} />
       </Button>
     </>
   );
@@ -269,7 +223,7 @@ export function MainLayout() {
           onClick={() => setSidebarOpen((prev) => !prev)}
           aria-label={sidebarOpen ? t('sidebar.toggle_collapse') : t('sidebar.toggle_expand')}
         >
-          {sidebarOpen ? icons.close : icons.menu}
+          {sidebarOpen ? <IconX size={16} /> : <IconMenu size={16} />}
         </Button>
         <img src={INLINE_LOGO_JPEG} alt="" className="sidebar-brand-logo" />
         <span className="sidebar-brand-title">{t('title.abbr')}</span>

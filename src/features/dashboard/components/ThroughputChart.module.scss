@@ -27,7 +27,7 @@
 }
 
 .legendValue {
-  font-weight: 650;
+  font-weight: 500;
   color: var(--text-primary);
   font-variant-numeric: tabular-nums;
 }
@@ -35,7 +35,7 @@
 .legendSwatch {
   width: 10px;
   height: 10px;
-  border-radius: 3px;
+  border-radius: 2px;
   flex: none;
 }
 
@@ -71,7 +71,7 @@
   position: absolute;
   right: 0;
   transform: translateY(-50%);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-tertiary);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -180,7 +180,7 @@
   display: block;
   width: 100%;
   height: 2px;
-  border-radius: $radius-full;
+  border-radius: $radius-pill;
   background: var(--border-primary);
 }
 
@@ -190,8 +190,8 @@
   left: 50%;
   transform: translateX(-50%);
   margin-bottom: 6px;
-  font-size: 11px;
-  font-weight: 650;
+  font-size: 12px;
+  font-weight: 500;
   color: var(--text-secondary);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -252,7 +252,7 @@
 }
 
 .tooltipTime {
-  font-weight: 650;
+  font-weight: 500;
   color: var(--text-primary);
   font-variant-numeric: tabular-nums;
 }
@@ -292,7 +292,7 @@
 .xTick {
   position: absolute;
   transform: translateX(-50%);
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-tertiary);
   font-variant-numeric: tabular-nums;
   white-space: nowrap;
@@ -320,7 +320,7 @@
 
   thead th {
     color: var(--text-tertiary);
-    font-weight: 600;
+    font-weight: 500;
     white-space: nowrap;
   }
 
@@ -347,7 +347,7 @@
 .placeholderTitle {
   margin: 0;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-primary);
 }
 

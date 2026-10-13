@@ -19,9 +19,9 @@
 
 .title {
   margin: 0;
-  font-size: clamp(26px, 3.2vw, 30px);
+  font-size: 24px;
   line-height: 1.15;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.02em;
   color: var(--text-primary);
 }
@@ -89,10 +89,10 @@
   cursor: pointer;
   background: none;
   color: var(--text-secondary);
-  border-radius: $radius-full;
+  border-radius: $radius-pill;
   padding: 10px 14px;
   font-size: 13px;
-  font-weight: 550;
+  font-weight: 500;
   line-height: 1;
   transition:
     color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out),

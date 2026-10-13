@@ -21,9 +21,12 @@ body {
 body {
   margin: 0;
   font-family: $font-family;
+  font-size: $text-body;
+  line-height: 20px;
+  font-weight: 400;
+  font-feature-settings: 'cv11';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  line-height: 1.5;
 }
 
 #root {

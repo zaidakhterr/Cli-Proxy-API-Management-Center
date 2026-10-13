@@ -53,7 +53,7 @@
   min-width: 0;
   height: 36px;
   border: 1px solid transparent;
-  border-radius: 10px;
+  border-radius: 2px;
   background: var(--bg-secondary);
   color: var(--text-secondary);
 
@@ -104,7 +104,7 @@
   height: 32px;
   padding: 0;
   border: 0;
-  border-radius: 8px;
+  border-radius: 2px;
   background: transparent;
   color: var(--text-secondary);
   cursor: pointer;
@@ -127,7 +127,7 @@
   button[aria-haspopup='listbox'] {
     height: 36px;
     border-color: transparent;
-    border-radius: 10px;
+    border-radius: 2px;
     background: transparent;
     box-shadow: none;
     color: var(--text-secondary);
@@ -173,12 +173,12 @@
 }
 
 .errorBanner {
-  font-size: 12.5px;
+  font-size: 13px;
   line-height: 1.5;
   color: var(--danger-color);
   background: var(--bg-error-light);
   border: 1px solid var(--warning-border);
-  border-radius: 10px;
+  border-radius: 2px;
   padding: 9px 12px;
   overflow-wrap: anywhere;
 }

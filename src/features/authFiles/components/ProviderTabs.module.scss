@@ -27,9 +27,9 @@
   background: none;
   cursor: pointer;
   padding: 8px 12px 11px;
-  border-radius: 8px 8px 0 0;
+  border-radius: 2px 2px 0 0;
   font-size: 13px;
-  font-weight: 550;
+  font-weight: 500;
   color: var(--text-secondary);
   white-space: nowrap;
   transition:
@@ -43,7 +43,7 @@
     right: 10px;
     bottom: -1px;
     height: 2px;
-    border-radius: $radius-full;
+    border-radius: $radius-pill;
     background: transparent;
     transition: background-color var(--dur-hover, 200ms) var(--ease-out-strong, ease-out);
   }
@@ -67,7 +67,7 @@
 
 .tabActive {
   color: var(--text-primary);
-  font-weight: 650;
+  font-weight: 500;
 
   &::after {
     background: var(--text-primary);
@@ -90,7 +90,7 @@
   justify-content: center;
   width: 18px;
   height: 18px;
-  border-radius: 5px;
+  border-radius: 2px;
 }
 
 .tabIcon {
@@ -101,8 +101,8 @@
 }
 
 .tabIconFallback {
-  font-size: 10px;
-  font-weight: 700;
+  font-size: 12px;
+  font-weight: 500;
   color: var(--text-secondary);
 }
 
@@ -112,13 +112,13 @@
 
 .tabCount {
   font-family: $font-mono;
-  font-size: 10.5px;
-  font-weight: 650;
+  font-size: 12px;
+  font-weight: 500;
   font-variant-numeric: tabular-nums;
   line-height: 1.6;
   color: var(--text-tertiary);
   padding: 0 6px;
-  border-radius: $radius-full;
+  border-radius: $radius-pill;
   background: color-mix(in srgb, var(--text-primary) 6%, transparent);
 
   .tabActive & {

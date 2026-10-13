@@ -61,13 +61,13 @@
 .sidebar-brand-logo {
   width: 24px;
   height: 24px;
-  border-radius: 6px;
+  border-radius: 2px;
   flex-shrink: 0;
 }
 
 .sidebar-brand-title {
   font-size: 14px;
-  font-weight: 700;
+  font-weight: 500;
   white-space: nowrap;
 }
 
@@ -83,7 +83,7 @@
   align-items: center;
   gap: 10px;
   padding: 7px 10px;
-  border-radius: 8px;
+  border-radius: 2px;
   color: var(--text-secondary);
   font-size: 13px;
   font-weight: 500;
@@ -112,7 +112,7 @@
   .nav-badge {
     margin-left: auto;
     font-family: $font-mono;
-    font-size: 11px;
+    font-size: 12px;
     color: var(--text-tertiary);
   }
 

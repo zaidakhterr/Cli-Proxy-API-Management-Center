@@ -17,9 +17,9 @@
 
 .title {
   margin: 0;
-  font-size: clamp(26px, 3.2vw, 30px);
+  font-size: 24px;
   line-height: 1.15;
-  font-weight: 700;
+  font-weight: 500;
   letter-spacing: -0.02em;
 }
 
@@ -59,7 +59,7 @@
   flex-direction: column;
   gap: 6px;
   padding: $spacing-lg;
-  border-radius: 14px;
+  border-radius: 2px;
   border: 1px solid var(--border-color);
   background: color-mix(in srgb, var(--bg-primary) 82%, transparent);
   transition: border-color $transition-fast;
@@ -70,7 +70,7 @@
     width: 28px;
     height: 3px;
     margin-bottom: 2px;
-    border-radius: $radius-full;
+    border-radius: $radius-pill;
     background: var(--tile-accent, var(--border-hover));
   }
 
@@ -88,15 +88,15 @@
 
 .statLabel {
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-secondary);
 }
 
 .statValue {
   font-family: $font-mono;
-  font-size: 28px;
+  font-size: 24px;
   line-height: 1.1;
-  font-weight: 600;
+  font-weight: 500;
   letter-spacing: -0.01em;
   color: var(--text-primary);
   font-variant-numeric: tabular-nums;
@@ -124,8 +124,8 @@
 
 .sectionTitle {
   margin: 0;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   color: var(--text-primary);
 }
 
@@ -134,7 +134,7 @@
   flex-direction: column;
   gap: $spacing-md;
   padding: clamp($spacing-lg, 2.4vw, 28px);
-  border-radius: 16px;
+  border-radius: 2px;
   border: 1px solid var(--border-color);
   background: color-mix(in srgb, var(--bg-primary) 82%, transparent);
 }
@@ -184,7 +184,7 @@
 
 .fleetName {
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 500;
   color: var(--text-primary);
   @include text-ellipsis;
 }
@@ -212,14 +212,14 @@
 
 .fleetTotal {
   font-family: $font-mono;
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
   color: var(--text-primary);
   font-variant-numeric: tabular-nums;
 }
 
 .fleetTotalLabel {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--text-tertiary);
 }
 
@@ -231,8 +231,8 @@
 
 .fleetRateValue {
   font-family: $font-mono;
-  font-size: 12.5px;
-  font-weight: 600;
+  font-size: 13px;
+  font-weight: 500;
   color: var(--text-secondary);
   font-variant-numeric: tabular-nums;
 }

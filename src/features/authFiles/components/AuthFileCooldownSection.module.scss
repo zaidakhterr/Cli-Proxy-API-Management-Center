@@ -13,7 +13,7 @@
   padding-block: 8px;
   cursor: pointer;
   list-style: none;
-  border-radius: 4px;
+  border-radius: 2px;
 
   &::-webkit-details-marker {
     display: none;
@@ -36,7 +36,7 @@
 }
 
 .scope {
-  font-weight: 600;
+  font-weight: 500;
 }
 
 .next,
@@ -46,7 +46,7 @@
 
 .next {
   color: var(--text-secondary);
-  font-size: 11px;
+  font-size: 12px;
 }
 
 .chevron {
@@ -84,7 +84,7 @@
 .model {
   min-width: 0;
   overflow-wrap: anywhere;
-  font-weight: 550;
+  font-weight: 500;
   color: var(--text-primary);
 }
 
@@ -106,7 +106,7 @@
 .note,
 .unknown {
   color: var(--text-tertiary);
-  font-size: 11px;
+  font-size: 12px;
   line-height: 1.5;
   overflow-wrap: anywhere;
 }
