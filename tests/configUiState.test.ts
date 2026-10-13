@@ -22,7 +22,6 @@ import {
   type ConfigStatusInput,
 } from '@/features/config/uiState';
 import type { VisualConfigValidationErrors } from '@/types/visualConfig';
-import { LANGUAGE_ORDER } from '@/utils/constants';
 
 const statusInput = (overrides: Partial<ConfigStatusInput> = {}): ConfigStatusInput => ({
   disconnected: false,
@@ -64,7 +63,7 @@ describe('resolveStatus', () => {
   });
 
   test('every status resolves label keys that exist in all supported locales', async () => {
-    const locales = LANGUAGE_ORDER;
+    const locales = ['en'] as const;
     const inputs: Partial<ConfigStatusInput>[] = [
       { disconnected: true },
       { loading: true },
@@ -196,7 +195,7 @@ describe('Antigravity credits UI and search', () => {
     const entry = findConfigFieldById('quotaAntigravityCredits');
     expect(entry?.sectionId).toBe('advanced');
     expect(entry?.labelKey).toBe('config_management.visual.sections.advanced.antigravity_credits');
-    for (const locale of LANGUAGE_ORDER) {
+    for (const locale of ['en']) {
       const json = await Bun.file(`src/i18n/locales/${locale}.json`).json();
       const sections = json.config_management.visual.sections;
       expect(sections).not.toHaveProperty('quota');

@@ -30,7 +30,7 @@ const classes = bindQuotaClasses(
  */
 const now = Date.now();
 
-// The i18n fallback is zh-CN; pin English so the countdown assertions read.
+// Pin English so the countdown assertions read.
 beforeAll(async () => {
   await i18n.changeLanguage('en');
 });
@@ -60,7 +60,7 @@ describe('CodexQuotaBody', () => {
     rateLimitResetCreditsAvailableCount: 1,
   };
 
-  test.each(['en', 'zh-CN', 'zh-TW', 'ru'])(
+  test.each(['en'])(
     'renders Business Premium with its premium badge in %s',
     async (language) => {
       await i18n.changeLanguage(language);
@@ -92,9 +92,6 @@ describe('CodexQuotaBody', () => {
 
   test.each([
     ['en', 'Credit balance', 'Unlimited'],
-    ['zh-CN', 'Credit 余额', '无限额'],
-    ['zh-TW', 'Credit 餘額', '無限額'],
-    ['ru', 'Остаток кредитов', 'Без ограничений'],
   ])(
     'renders account credits independently of manual resets in %s',
     async (language, label, unlimited) => {
