@@ -15,7 +15,6 @@ import {
 } from './hooks/useOAuthFlows';
 import { useVertexImport } from './hooks/useVertexImport';
 import {
-  isSponsor,
   OAUTH_PROVIDERS,
   resolveThemedIcon,
   supportsManualCallback,
@@ -26,6 +25,8 @@ import styles from './OAuthPage.module.scss';
 /** 对话框焦点标识：Vertex 不是 OAuth 提供商，用保留 id 避免与提供商冲突。 */
 const VERTEX_DIALOG_ID = '__vertex__';
 const VERTEX_LABEL = 'Vertex AI';
+/** The accounts this dashboard is mostly used for; everything else sits under "Other providers". */
+const PRIMARY_PROVIDER_IDS = ['anthropic', 'codex'];
 
 type DialogTarget = { kind: 'oauth'; id: string } | { kind: 'vertex' };
 
@@ -89,10 +90,6 @@ export function OAuthPage() {
     icon: iconOf(card),
   });
 
-  const sponsorOf = (card: OAuthProviderCard) =>
-    isSponsor(card)
-      ? { url: card.sponsor.signUpUrl, label: t('auth_login.kimi_sign_up_button') }
-      : undefined;
 
   const tileStatusLabel = (status: ProviderFlowState['status']) =>
     status === 'waiting'
@@ -129,8 +126,10 @@ export function OAuthPage() {
   const dialogCard =
     dialog?.kind === 'oauth' ? providerCards.find((card) => card.id === dialog.id) : undefined;
   const providerCount = providerCards.length;
-  const sponsorCards = providerCards.filter(isSponsor);
-  const regularCards = providerCards.filter((card) => !isSponsor(card));
+  const primaryCards = PRIMARY_PROVIDER_IDS.map((id) =>
+    providerCards.find((card) => card.id === id)
+  ).filter((card): card is OAuthProviderCard => Boolean(card));
+  const otherCards = providerCards.filter((card) => !primaryCards.includes(card));
 
   const renderTile = (card: OAuthProviderCard) => {
     const status = flows.states[card.id]?.status;
@@ -143,7 +142,6 @@ export function OAuthPage() {
         index={providerCards.indexOf(card)}
         status={status}
         statusLabel={tileStatusLabel(status)}
-        sponsor={sponsorOf(card)}
         onOpen={() => openProvider(card)}
       />
     );
@@ -160,17 +158,14 @@ export function OAuthPage() {
         addedCount={flows.addedCount}
       />
 
-      {/* 赞助商独占首行（大卡 + 品牌蓝），其余提供商在下方紧凑网格 */}
-      {sponsorCards.length > 0 && (
-        <div className={styles.sponsorGrid}>{sponsorCards.map(renderTile)}</div>
-      )}
-      <div className={styles.grid}>{regularCards.map(renderTile)}</div>
+      <div className={styles.primaryGrid}>{primaryCards.map(renderTile)}</div>
 
       <section className={styles.section} aria-labelledby={otherMethodsId}>
         <h2 className={styles.sectionLabel} id={otherMethodsId} data-reveal>
           {t('auth_login.other_login_methods')}
         </h2>
         <div className={styles.grid}>
+          {otherCards.map(renderTile)}
           <ProviderTile
             label={VERTEX_LABEL}
             caption={t('vertex_import.file_label')}
@@ -189,7 +184,6 @@ export function OAuthPage() {
           state={flows.states[dialogCard.id] ?? {}}
           text={(suffix) => flows.providerText(dialogCard.id, suffix)}
           supportsCallback={supportsManualCallback(dialogCard)}
-          sponsor={sponsorOf(dialogCard)}
           onStart={() => void flows.startAuth(dialogCard.id)}
           onCancel={() => void flows.cancelAuth(dialogCard.id)}
           onCallbackChange={(value) => flows.setCallbackInput(dialogCard.id, value)}

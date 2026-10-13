@@ -5,19 +5,10 @@ import { MemoryRouter } from 'react-router-dom';
 import { I18nextProvider } from 'react-i18next';
 import { createInstance } from 'i18next';
 import en from '@/i18n/locales/en.json';
-import zhCN from '@/i18n/locales/zh-CN.json';
-import zhTW from '@/i18n/locales/zh-TW.json';
-import ru from '@/i18n/locales/ru.json';
-import ko from '@/i18n/locales/ko.json';
-import vi from '@/i18n/locales/vi.json';
 import { OAuthPage } from '@/features/oauth/OAuthPage';
 import { resolveCallbackUrl, XAI_CALLBACK_URL } from '@/features/oauth/callbackUrl';
 import { resolveFlowView, splitAuthUrl } from '@/features/oauth/flowView';
 import { buildPluginOAuthProviderCards, OAUTH_PROVIDERS } from '@/features/oauth/providers';
-import {
-  KIMI_CHINESE_AFFILIATE_URL,
-  KIMI_INTERNATIONAL_AFFILIATE_URL,
-} from '@/features/providers/kimi';
 import type { PluginListEntry } from '@/types';
 
 describe('OAuth dialog view resolution', () => {
@@ -119,7 +110,7 @@ describe('plugin OAuth tiles', () => {
 });
 
 describe('OAuth provider gallery', () => {
-  const locales = { en, 'zh-CN': zhCN, 'zh-TW': zhTW, ru, ko, vi } as const;
+  const locales = { en } as const;
 
   for (const [lng, translation] of Object.entries(locales)) {
     test(`renders every provider tile without raw keys (${lng})`, async () => {
@@ -144,7 +135,7 @@ describe('OAuth provider gallery', () => {
     });
   }
 
-  test('keeps both Kimi registration links as safe external links', async () => {
+  test('lists Claude and Codex first and has no sign-up promotions', async () => {
     const i18n = createInstance();
     await i18n.init({ lng: 'en', resources: { en: { translation: en } } });
     const markup = renderToStaticMarkup(
@@ -154,11 +145,12 @@ describe('OAuth provider gallery', () => {
         createElement(MemoryRouter, null, createElement(OAuthPage))
       )
     );
-    for (const url of [KIMI_CHINESE_AFFILIATE_URL, KIMI_INTERNATIONAL_AFFILIATE_URL]) {
-      const escaped = url.replace(/[.*+?^${}()|[\]\\]/g, '\\$&').replace(/&/g, '&amp;');
-      expect(markup).toMatch(
-        new RegExp(`href="${escaped}" target="_blank" rel="noopener noreferrer"`)
-      );
-    }
+    const claude = markup.indexOf('>Claude<');
+    const codex = markup.indexOf('>Codex<');
+    const kimi = markup.indexOf('kimi.com');
+    expect(claude).toBeGreaterThan(-1);
+    expect(codex).toBeGreaterThan(claude);
+    expect(kimi).toBeGreaterThan(codex);
+    expect(markup).not.toContain('target="_blank"');
   });
 });

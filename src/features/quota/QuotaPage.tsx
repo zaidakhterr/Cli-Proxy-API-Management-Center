@@ -26,6 +26,7 @@ import { ProviderTabs } from '@/features/authFiles/components/ProviderTabs';
 import { QuotaHeader } from './components/QuotaHeader';
 import { QuotaCard } from './components/QuotaCard';
 import { QuotaTimeline } from './components/QuotaTimeline';
+import { QuotaSummary } from './components/QuotaSummary';
 import {
   CARD_ENTRANCE_BUDGET_MS,
   QUOTA_PAGE_SIZE,
@@ -301,6 +302,19 @@ export function QuotaPage() {
 
   const canUseActions = !disableControls && !loading && filesGeneration === sessionGeneration;
 
+  // Load quota for the visible credentials once per visit, so the page opens with numbers
+  // instead of "click to refresh". Devin keeps its own auto-load hook above.
+  const autoLoadedRef = useRef(false);
+  useEffect(() => {
+    if (autoLoadedRef.current || !canUseActions || error || batchLoading) return;
+    if (pageItems.length === 0) return;
+    autoLoadedRef.current = true;
+    const missing = pageItems.filter(
+      (entry) => entry.type !== 'devin' && !entry.file.disabled && !getQuota(entry)
+    );
+    if (missing.length > 0) void loadQuota(missing);
+  }, [batchLoading, canUseActions, error, getQuota, loadQuota, pageItems]);
+
   /* ---------- 首屏卡片一次性级联入场 ----------
    * 首批数据渲染后立即翻转 cardsAnimated；已挂载的卡片在挂载时捕获过自己的
    * 延迟（QuotaCard 内 useState 初始化），后续切 tab/翻页/刷新新挂载的卡片
@@ -334,11 +348,18 @@ export function QuotaPage() {
         onRefreshAll={handleRefreshAll}
       />
 
+      <QuotaSummary
+        entries={entries}
+        quotaFor={getQuota}
+        resolvedTheme={resolvedTheme}
+        onSelectProvider={handleTabChange}
+      />
+
       <section className={styles.workbench}>
         {/* 提供商导航与搜索工具栏分层，避免不同控件争夺视觉焦点。 */}
         <div className={styles.tabsRow} data-reveal>
           <ProviderTabs
-            types={TAB_IDS}
+            types={TAB_IDS.filter((id) => id === 'all' || id === tab || (tabCounts[id] ?? 0) > 0)}
             counts={tabCounts}
             active={tab}
             resolvedTheme={resolvedTheme}

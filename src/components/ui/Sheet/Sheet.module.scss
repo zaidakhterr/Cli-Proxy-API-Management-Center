@@ -102,7 +102,7 @@
 }
 
 .eyebrow {
-  font-size: 11px;
+  font-size: 12px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -110,8 +110,8 @@
 }
 
 .title {
-  font-size: 18px;
-  font-weight: 600;
+  font-size: 16px;
+  font-weight: 500;
   color: var(--text-primary);
   margin: 0;
 }
@@ -212,4 +212,3 @@
     transform: translate3d(100%, 0, 0);
   }
 }
-
