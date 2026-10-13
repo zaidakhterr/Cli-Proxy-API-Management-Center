@@ -78,7 +78,7 @@
   flex-shrink: 0;
   height: $badge-height;
   padding: 0 6px;
-  border-radius: 6px;
+  border-radius: $radius-pill;
   font-size: $text-caption;
   font-weight: 500;
 }

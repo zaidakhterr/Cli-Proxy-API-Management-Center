@@ -26,7 +26,7 @@ describe('auth file card presentation contract', () => {
     expect(source).toContain("t('auth_files.status_problem')");
     expect(source).toContain("t('auth_files.type_virtual')");
     expect(styles).toMatch(
-      /%state-badge\s*\{[^}]*height:\s*\$badge-height;[^}]*border-radius:\s*6px;/
+      /%state-badge\s*\{[^}]*height:\s*\$badge-height;[^}]*border-radius:\s*\$radius-pill;/
     );
   });
 

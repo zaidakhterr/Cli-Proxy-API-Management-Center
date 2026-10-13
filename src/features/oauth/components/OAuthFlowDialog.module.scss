@@ -167,7 +167,7 @@
   justify-content: center;
   width: 22px;
   height: 22px;
-  border-radius: 50%;
+  border-radius: $radius-md;
   border: 1px solid var(--border-primary);
   background: var(--bg-primary);
   font-family: $font-mono;
@@ -301,7 +301,7 @@
 .callbackInput {
   flex: 1;
   min-width: 0;
-  height: 36px;
+  height: $control-height;
   padding: 0 12px;
   border-radius: 2px;
   font-family: $font-mono;
@@ -338,8 +338,8 @@
   justify-content: center;
   gap: 7px;
   flex-shrink: 0;
-  height: 36px;
-  padding: 0 16px;
+  height: $control-height;
+  padding: 0 12px;
   border-radius: $radius-pill;
   font-size: 13px;
   font-weight: 500;
@@ -368,7 +368,6 @@
 
 .ghost {
   @extend %pill;
-  height: 30px;
   padding: 0 12px;
   font-size: 13px;
   color: var(--text-secondary);

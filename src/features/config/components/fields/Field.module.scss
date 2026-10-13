@@ -279,7 +279,7 @@
 .fieldAnchor {
   display: block;
   min-width: 0;
-  border-radius: var(--radius-md, 8px);
+  border-radius: var(--radius-md);
   scroll-margin-top: calc(var(--header-height, 64px) + 16px);
 }
 

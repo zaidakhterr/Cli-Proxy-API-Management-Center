@@ -24,7 +24,8 @@ $spacing-2xl: 48px;
 $radius-sm: 2px;
 $radius-md: 2px;
 $radius-lg: 2px;
-$radius-pill: 6px;
+// Everything is square: badges and pills use the same 2px corner as controls.
+$radius-pill: 2px;
 $radius-full: $radius-pill;
 
 // 阴影
